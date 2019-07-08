@@ -1,0 +1,61 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>ServiceWorker and DOM</title>
+</head>
+<body>
+  <h1>ServiceWorker and DOM</h1>
+  <p>
+    This example contains three JS files:
+  </p>
+  <ul>
+    <li><a href="/app.js">/app.js</a>: typical JS code with events connected to the DOM</li>
+    <li><a href="/sw.js">/sw.js</a>: a Service Worker whose main job is to fetch and persist all the assets needed to show the app offline</li>
+    <li>idb-keyval-iife.js, a standalone version of <a href="https://github.com/jakearchibald/idb-keyval">idb-keyval</a> used in the ServiceWorker to easily use IndexedDB as a key-value store, where we cached the videos</li>
+  </ul>
+
+  <p>
+    The UI has the following elements:
+  </p>
+
+  <ul>
+    <li>A video player not linked to any video yet</li>
+    <li>A button to cache all the videos that we'll play in the site: we could cache them by default when the site loads for the first time, but that may eat lots of MB from the visitor's data plan so it's probably better if we trigger this manually</li>
+    <li>A list of links that, once the videos have been cached, will be able to play each video in the player</li>
+    <li>Under the <code>&lt;hr&gt;</code> there's a log of what's happening in the app: I've found it handy when debugging in a mobile device</li>
+  </ul>
+
+  <p>
+    Things that I haven't been able to work on yet:
+  </p>
+
+  <ul>
+    <li>In the ServiceWorker, use the install/fetch event handlers to cache the HTML, JS and images you may add, so everything can be run offline</li>
+    <li>As mentioned in <a href="https://docs.google.com/document/d/1hLqTKWI4pI332zhRlp0FusjmV66ksW5mdprLcMSyLJ0/edit?ts=5d1ba1a2#heading=h.1vaiqow8e4ks">spec</a>, use JSON (or a JS object) to specify the video URLs (currently hardcoded at the top of the app.js file) and the chapters/lists they belong to</li>
+    <li>Use the JSON/JS object to generate the UI that will allow to switch between videos</li>
+    <li>Port some of my old-style JS to ES5: arrow functions, forEach... all those should be supported by all the modern browsers that support ServiceWorkers</li>
+  </ul>
+
+  <p>
+    <button class="cache-all-videos">Cache all the videos</button>
+  </p>
+
+  <ul>
+    <li><a href="#" class="jump-video" data-video-url="https://booth-videos.s3.us-east-2.amazonaws.com/go-deploy.mp4">Go - deploy</a></li>
+    <li><a href="#" class="jump-video" data-video-url="https://booth-videos.s3.us-east-2.amazonaws.com/go-addons.mp4">Go - add-ons</a></li>
+    <li><a href="#" class="jump-video" data-video-url="https://booth-videos.s3.us-east-2.amazonaws.com/go-scale.mp4">Go - scale</a></li>
+    <li><a href="#" class="jump-video" data-video-url="https://booth-videos.s3.us-east-2.amazonaws.com/cd-github.mp4">CD - GitHub</a></li>
+  </ul>
+
+  <video controls playsinline muted="true" width="300">
+    <source>
+  </video>
+
+  <hr>
+
+  <pre class='log-ui'></pre>
+  <script src="/app.js"></script>
+</body>
+</html>
