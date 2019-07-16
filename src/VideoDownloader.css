@@ -1,0 +1,112 @@
+.videodownloader-container {
+  display: grid;
+  height: 100vh;
+  grid-template-rows: 1fr 75px;
+  grid-template-columns: 1fr;
+  grid-template-areas:
+    "main"
+    "footer";
+}
+
+.videodownloader-main {
+  padding: 40px 40px 0 40px;
+}
+
+.videodownloader-header {
+  display: flex;
+  flex-direction: row;
+}
+
+.videodownloader-header h1 {
+  flex: 1;
+  text-align: center;
+  color: white;
+  font-size: 30px;
+}
+
+.videodownloader-header button {
+  background-color: rgb(32, 27, 65);
+  color: white;
+  text-transform: uppercase;
+  border: 0;
+  border-radius: 3px;
+  min-width: 300px;
+  font-size: 20px;
+  letter-spacing: 3px;
+  padding: 30px 0;
+  cursor: pointer;
+}
+
+.videodownloader-header button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.videodownloader-item {
+  display: flex;
+  flex-direction: row;
+  background-color: rgba(32, 27, 65, 0.5);
+  margin: 13px 0;
+  color: white;
+  height: 80px;
+}
+
+.videodownloader-item-url {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 20px;
+  font-size: 20px;
+}
+
+.videodownloader-item-url p {
+  margin: 3px 0;
+}
+
+.videodownloader-item-status {
+  width: 145px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background-color: rgb(32, 27, 65);
+  padding: 13px 0;
+}
+
+.videodownloader-item-status.error {
+  background-color: rgb(207, 72, 100);
+}
+
+.videodownloader-item-status.queued {
+  background-color: transparent;
+}
+
+.videodownloader-item-status svg {
+  fill: white;
+}
+
+.videodownloader-item-status div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.videodownloader-footer {
+  grid-area: footer;
+  background-color: rgba(32, 27, 65, 0.4);
+  display: flex;
+  align-items: center;
+  padding-left: 26px;
+  user-select: none;
+}
+
+.clear-all-button {
+  background: none;
+  border: 0;
+  color: white;
+  font-size: 16px;
+  text-decoration: underline;
+  cursor: pointer;
+}
