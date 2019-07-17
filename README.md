@@ -33,6 +33,7 @@ To make deployment easy, the app comes with a Dockerfile configured for use with
 ```sh
 $ heroku container:login
 $ heroku create
+$ npm run build
 $ heroku container:push web
 $ heroku container:release web
 ```
