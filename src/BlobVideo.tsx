@@ -21,15 +21,22 @@ const BlobVideo: React.FC<BlobVideoProps> = ({
   const playerRef = useRef<HTMLVideoElement>(null);
   useEffect(() => {
     async function setVideoSrc() {
-      const posterSrc = await blobImage(posterUrl);
-      const videoBlob = await get<StoredVideo>(videoUrl);
-      const videoSrc = URL.createObjectURL(
-        new Blob([videoBlob.buffer], { type: videoBlob.type })
-      );
-      setSrc({ videoSrc, posterSrc });
+      try {
+        const posterSrc = await blobImage(posterUrl);
+        const videoBlob = await get<StoredVideo>(videoUrl);
+        const videoSrc = URL.createObjectURL(
+          new Blob([videoBlob.buffer], { type: videoBlob.type })
+        );
+        setSrc({ videoSrc, posterSrc });
 
-      if (onEnded && playerRef.current) {
-        playerRef.current.addEventListener("ended", onEnded);
+        if (onEnded && playerRef.current) {
+          playerRef.current.addEventListener("ended", onEnded);
+        }
+      } catch (err) {
+        // The thrown error is likely due to Safari closing the IDB connection.
+        // Reloading the page re-establishes the connection.
+        console.error(err);
+        window.location.reload();
       }
     }
     setVideoSrc();
