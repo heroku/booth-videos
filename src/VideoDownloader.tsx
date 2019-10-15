@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { keys, set, clear } from "idb-keyval";
+import { Link } from "react-router-dom";
 import "./VideoDownloader.css";
 import { MalibuIcon } from "@heroku/react-malibu";
 import { ReactComponent as Logo } from "./logo.svg";
@@ -34,12 +35,8 @@ const DownloadStatusIndicator: React.FC<DownloadStatusProps> = ({ status }) => {
 
 interface VideoDownloaderProps {
   videos: string[];
-  goToView: () => void;
 }
-const VideoDownloader: React.FC<VideoDownloaderProps> = ({
-  videos,
-  goToView
-}) => {
+const VideoDownloader: React.FC<VideoDownloaderProps> = ({ videos }) => {
   const [progress, setProgress] = useState({} as {
     [key: string]: Status;
   });
@@ -112,9 +109,9 @@ const VideoDownloader: React.FC<VideoDownloaderProps> = ({
             Download Videos
           </button>
           <h1>Videos</h1>
-          <button disabled={!allVideosDownloaded()} onClick={goToView}>
-            Go to view
-          </button>
+          <Link to="/viewer">
+            <button disabled={!allVideosDownloaded()}>Go to view</button>
+          </Link>
         </header>
         {Object.keys(progress)
           .sort()

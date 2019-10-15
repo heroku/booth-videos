@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { MalibuIcon } from "@heroku/react-malibu";
 import BlobVideo from "./BlobVideo";
+import { useHistory } from "react-router-dom";
 import { VideosConfig, VideoLanguage } from "./types";
 import { ReactComponent as Logo } from "./logo.svg";
 import "./Screencast.css";
@@ -16,14 +17,14 @@ const LANGUAGES: Record<VideoLanguage, string> = {
   go: "Go"
 };
 
-interface LongPressLogoProps {
-  goToView: () => void;
-}
-const LongPressLogo: React.FC<LongPressLogoProps> = ({ goToView }) => {
+const LongPressLogo: React.FC = () => {
+  const history = useHistory();
+
   let timer: number;
   function onLongPress() {
     timer = window.setTimeout(() => {
-      goToView();
+      // history.push("/");
+      window.location.reload();
     }, 5000);
   }
 
@@ -79,9 +80,8 @@ const ScreencastLanguagesList: React.FC<ScreencastLanguagesListProps> = ({
 
 interface Props {
   config: VideosConfig;
-  goToView: () => void;
 }
-const Screencast: React.FC<Props> = ({ config, goToView }) => {
+const Screencast: React.FC<Props> = ({ config }) => {
   const [
     { activeSection, activeVideo, activeLanguageVideo },
     setState
@@ -218,7 +218,7 @@ const Screencast: React.FC<Props> = ({ config, goToView }) => {
         />
       </section>
       <section className="footer-logo">
-        <LongPressLogo goToView={goToView} />
+        <LongPressLogo />
       </section>
     </div>
   );
