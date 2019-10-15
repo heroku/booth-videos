@@ -28,14 +28,12 @@ To exit the viewing interface, you can refresh the page, which will bring you to
 
 To build the static assets for the app, run `npm run build`. This will generate static assets in the `build` folder that can then be deployed to any static file host.
 
-To make deployment easy, the app comes with a Dockerfile configured for use with Heroku's container service.
+To make deployment easy, the app comes with a `heroku.yml` configured for use with Heroku.
 
 ```sh
-$ heroku container:login
 $ heroku create
-$ npm run build
-$ heroku container:push web
-$ heroku container:release web
+$ heroku stack:set container
+$ git push heroku master
 ```
 
 ## Create React App Stuff
