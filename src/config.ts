@@ -2,7 +2,8 @@ import { VideosConfig } from "./types";
 
 const config: VideosConfig = {
   autoplay: false,
-  sections: [
+  // @ts-ignore
+  sections: process.env.REACT_APP_VIDEOS ? JSON.parse(process.env.REACT_APP_VIDEOS) : [
     {
       name: "Deploy",
       videos: [
