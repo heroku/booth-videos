@@ -33,6 +33,7 @@
   "eslintConfig": {
     "extends": "react-app"
   },
+  "eslintIgnore": ["build/*"],
   "private": true,
   "scripts": {
     "build": "echo \"REACT_APP_VIDEOS=${REACT_APP_VIDEOS}\" && react-scripts build",
