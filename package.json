@@ -33,11 +33,17 @@
   "eslintConfig": {
     "extends": "react-app"
   },
-  "eslintIgnore": ["build/*"],
+  "eslintIgnore": [
+    "build/*"
+  ],
   "private": true,
   "scripts": {
-    "build": "echo \"REACT_APP_VIDEOS=${REACT_APP_VIDEOS}\" && react-scripts build",
+    "build": "echo \"REACT_APP_VIDEO_CONFIG=${REACT_APP_VIDEO_CONFIG}\" && react-scripts build",
     "eject": "react-scripts eject",
+    "eslint": "eslint --fix --ext js,jsx,ts,tsx .",
+    "lint": "npm run eslint && npm run prettier:list",
+    "prettier": "prettier --write '**/*.{js,jsx,ts,tsx,md,css,json}'",
+    "prettier:list": "prettier --list-different '**/*.{js,jsx,ts,tsx,md,css,json}'",
     "start": "if-env NODE_ENV=production && npm run start:prod || npm run start:dev",
     "start:dev": "react-scripts start",
     "start:prod": "serve --single --listen tcp://0.0.0.0:$PORT build",

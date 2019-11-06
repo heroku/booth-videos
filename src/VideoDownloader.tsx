@@ -56,7 +56,7 @@ const VideoDownloader: React.FC<VideoDownloaderProps> = ({ videos }) => {
       );
     }
     initialSetup(videos);
-  }, [videos]);
+  }, [progress, videos]);
 
   async function download() {
     setIsDownloading(true);

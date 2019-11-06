@@ -1,5 +1,5 @@
 {
   "name": "Booth Videos",
   "description": "Displays a nice interface for playing videos at Heroku events.",
-  "repository": "https://github.com/heroku/booth-videos",
+  "repository": "https://github.com/heroku/booth-videos"
 }
