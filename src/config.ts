@@ -24,7 +24,7 @@ const config: VideosConfig = {
             {
               language: "java",
               url:
-                "https://heroku-booth-videos-test.s3.amazonaws.com/events/java-1-deploy-with-cli-16-9.mp4",
+                "https://heroku-dev-rel-booth-videos.s3.amazonaws.com/2019-12-02/java-deploy-with-cli-rough-v1.mp4",
               posterUrl: "https://heroku-booth-videos-test.s3.amazonaws.com/events/title-cards/java/java-1-deploy-with-cli.png"
             },
             {
@@ -42,7 +42,7 @@ const config: VideosConfig = {
             {
               language: "go",
               url:
-                "https://heroku-booth-videos-test.s3.amazonaws.com/events/go-1-deploy-with-cli-16-9.mp4",
+                "https://heroku-dev-rel-booth-videos.s3.amazonaws.com/2019-12-02/go-deploy-with-cli-rough-v1.mp4",
               posterUrl: "https://heroku-booth-videos-test.s3.amazonaws.com/events/title-cards/go/go-1-deploy-with-cli.png"
             }
           ]
@@ -152,7 +152,7 @@ const config: VideosConfig = {
             {
               language: "java",
               url:
-                "https://heroku-booth-videos-test.s3.amazonaws.com/events/java-4-addons-16-9.mp4",
+                "https://heroku-dev-rel-booth-videos.s3.amazonaws.com/2019-12-02/java-addons-rough-v1.mp4",
               posterUrl: "https://heroku-booth-videos-test.s3.amazonaws.com/events/title-cards/java/java-4-addons.png"
             },
             {
@@ -170,7 +170,7 @@ const config: VideosConfig = {
             {
               language: "go",
               url:
-                "https://heroku-booth-videos-test.s3.amazonaws.com/events/go-4-addons-16-9.mp4",
+                "https://heroku-dev-rel-booth-videos.s3.amazonaws.com/2019-12-02/go-install-addons-rough-v2.mp4",
               posterUrl: "https://heroku-booth-videos-test.s3.amazonaws.com/events/title-cards/go/go-4-addons.png"
             }
           ]
@@ -198,7 +198,7 @@ const config: VideosConfig = {
             {
               language: "java",
               url:
-                "https://heroku-booth-videos-test.s3.amazonaws.com/events/java-5-scale-16-9.mp4",
+                "https://heroku-dev-rel-booth-videos.s3.amazonaws.com/2019-12-02/java-scale-rough-v1.mp4",
               posterUrl: "https://heroku-booth-videos-test.s3.amazonaws.com/events/title-cards/java/java-5-scale.png"
             },
             {
@@ -216,7 +216,7 @@ const config: VideosConfig = {
             {
               language: "go",
               url:
-                "https://heroku-booth-videos-test.s3.amazonaws.com/events/go-5-scale-16-9.mp4",
+                "https://heroku-dev-rel-booth-videos.s3.amazonaws.com/2019-12-02/go-scale-rough-v2.mp4",
               posterUrl: "https://heroku-booth-videos-test.s3.amazonaws.com/events/title-cards/go/go-5-scale.png"
             }
           ]
