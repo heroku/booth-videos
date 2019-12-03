@@ -6,6 +6,14 @@ const envConfig: VideosConfig = process.env.REACT_APP_VIDEO_CONFIG
 
 const config: VideosConfig = {
   autoplay: false,
+  languageEasterEggs: {
+    node: false,
+    ruby: false,
+    java: true,
+    php: true,
+    python: true,
+    go: false
+  },
   sections: [
     {
       name: "Deploy",

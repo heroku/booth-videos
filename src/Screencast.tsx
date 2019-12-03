@@ -4,11 +4,14 @@ import BlobVideo from "./BlobVideo";
 import { useLocation } from "react-router-dom";
 import qs from "query-string";
 import cx from "classnames";
+import ms from "ms";
 import { VideosConfig, VideoLanguage } from "./types";
 import { ReactComponent as Logo } from "./logo.svg";
 import "./Screencast.css";
 
 // TODO: scroll video section into view
+
+const random = (min: number, max: number) => Math.random() * (max - min) + min;
 
 const LANGUAGES: Record<VideoLanguage, string> = {
   node: "Node",
@@ -81,20 +84,40 @@ interface EasterEggProps {
 }
 const EasterEgg: React.FC<EasterEggProps> = ({ language }) => {
   const [show, setShow] = useState(false);
-  const ref = useRef(null);
+  const nodeRef = useRef(document.createElement("div"));
+  const languageRef = useRef("");
 
+  // Whenever an animation ends on the easter egg node, set the state to false
+  // which will trigger another animation to kick off another animation eventually
   useEffect(() => {
-    console.log(ref);
-  }, [ref]);
+    const node = nodeRef.current;
+    const listener = () => setShow(false);
+    node.addEventListener("animationend", listener);
+    return () => node.removeEventListener("animationend", listener);
+  }, []);
 
-  // useEffect(() => {
-  //   setTimeout(() => setShow(!show), 5 * 1000);
-  // }, [language, show]);
+  // Language changes should reset animation state
+  useEffect(() => {
+    if (languageRef.current !== language) {
+      languageRef.current = language;
+      setShow(false);
+    }
+  }, [language]);
+
+  // Whenever the state is toggled off, a new animation will be triggered at a
+  // future random time
+  useEffect(() => {
+    if (!show) {
+      const timeout = setTimeout(
+        () => setShow(true),
+        random(ms("1s"), ms("2s"))
+      );
+      return () => clearTimeout(timeout);
+    }
+  }, [show]);
 
   return (
-    <div ref={ref} className={cx("easter-egg", show && "show")}>
-      {language}
-    </div>
+    <div ref={nodeRef} className={cx("easter-egg", language, { show })}></div>
   );
 };
 
@@ -169,7 +192,9 @@ const Screencast: React.FC<Props> = ({ config }) => {
   return (
     <div className="container">
       <section className="screencast">
-        <EasterEgg language={activeLanguageVideo.language} />
+        {config.languageEasterEggs[activeLanguageVideo.language] && (
+          <EasterEgg language={activeLanguageVideo.language} />
+        )}
         <div className="wrapper">
           <h2 className="video-name">{activeVideo.name}</h2>
           <div className="screencast-container has-spinner">
