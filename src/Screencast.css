@@ -33,11 +33,14 @@
   }
 }
 .screencast-language {
+  font-size: 16px;
   padding: 0px 16px;
   display: inline-block;
   position: relative;
   text-decoration: none;
   color: rgba(255, 255, 255, 0.5);
+  cursor: pointer;
+  background: none;
 }
 .screencast-language .icon {
   width: 16px;
@@ -282,8 +285,6 @@ video {
   border: 1px solid transparent;
   border-radius: 3px;
   padding: 10px;
-  font-size: 16px;
-  background: none;
 }
 
 .sidebar-video-name.playing,
