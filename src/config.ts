@@ -222,6 +222,81 @@ const config: VideosConfig = {
           ]
         }
       ]
+    },
+    {
+      name: "Enterprise",
+      videos: [
+        {
+          name: "Private Spaces",
+          videos: [
+            {
+              language: "node",
+              url: "https://heroku-dev-rel-booth-videos.s3.amazonaws.com/2019-12-02/heroku-enterprise-private-spaces.mp4",
+              posterUrl: "https://heroku-dev-rel-booth-videos.s3.amazonaws.com/2019-12-02/title-cards/node/private-spaces-node.png"
+            },
+            {
+              language: "ruby",
+              url: "https://heroku-dev-rel-booth-videos.s3.amazonaws.com/2019-12-02/heroku-enterprise-private-spaces.mp4",
+              posterUrl: "https://heroku-dev-rel-booth-videos.s3.amazonaws.com/2019-12-02/title-cards/ruby/private-spaces-ruby.png"
+            },
+            {
+              language: "java",
+              url: "https://heroku-dev-rel-booth-videos.s3.amazonaws.com/2019-12-02/heroku-enterprise-private-spaces.mp4",
+              posterUrl: "https://heroku-dev-rel-booth-videos.s3.amazonaws.com/2019-12-02/title-cards/java/private-spaces-java.png"
+            },
+            {
+              language: "php",
+              url: "https://heroku-dev-rel-booth-videos.s3.amazonaws.com/2019-12-02/heroku-enterprise-private-spaces.mp4",
+              posterUrl: "https://heroku-dev-rel-booth-videos.s3.amazonaws.com/2019-12-02/title-cards/php/private-spaces-php.png"
+            },
+            {
+              language: "python",
+              url: "https://heroku-dev-rel-booth-videos.s3.amazonaws.com/2019-12-02/heroku-enterprise-private-spaces.mp4",
+              posterUrl: "https://heroku-dev-rel-booth-videos.s3.amazonaws.com/2019-12-02/title-cards/python/private-spaces-python.png"
+            },
+            {
+              language: "go",
+              url: "https://heroku-dev-rel-booth-videos.s3.amazonaws.com/2019-12-02/heroku-enterprise-private-spaces.mp4",
+              posterUrl: "https://heroku-dev-rel-booth-videos.s3.amazonaws.com/2019-12-02/title-cards/go/private-spaces-go.png"
+            }
+          ]
+        },
+        {
+          name: "Enterprise Accounts",
+          videos: [
+            {
+              language: "node",
+              url: "https://heroku-dev-rel-booth-videos.s3.amazonaws.com/2019-12-02/heroku-enterprise-accounts-teams.mp4",
+              posterUrl: "https://heroku-dev-rel-booth-videos.s3.amazonaws.com/2019-12-02/title-cards/node/enterprise-node.png"
+            },
+            {
+              language: "ruby",
+              url: "https://heroku-dev-rel-booth-videos.s3.amazonaws.com/2019-12-02/heroku-enterprise-accounts-teams.mp4",
+              posterUrl: "https://heroku-dev-rel-booth-videos.s3.amazonaws.com/2019-12-02/title-cards/ruby/enterprise-ruby.png"
+            },
+            {
+              language: "java",
+              url: "https://heroku-dev-rel-booth-videos.s3.amazonaws.com/2019-12-02/heroku-enterprise-accounts-teams.mp4",
+              posterUrl: "https://heroku-dev-rel-booth-videos.s3.amazonaws.com/2019-12-02/title-cards/java/enterprise-java.png"
+            },
+            {
+              language: "php",
+              url: "https://heroku-dev-rel-booth-videos.s3.amazonaws.com/2019-12-02/heroku-enterprise-accounts-teams.mp4",
+              posterUrl: "https://heroku-dev-rel-booth-videos.s3.amazonaws.com/2019-12-02/title-cards/php/enterprise-php.png"
+            },
+            {
+              language: "python",
+              url: "https://heroku-dev-rel-booth-videos.s3.amazonaws.com/2019-12-02/heroku-enterprise-accounts-teams.mp4",
+              posterUrl: "https://heroku-dev-rel-booth-videos.s3.amazonaws.com/2019-12-02/title-cards/python/enterprise-python.png"
+            },
+            {
+              language: "go",
+              url: "https://heroku-dev-rel-booth-videos.s3.amazonaws.com/2019-12-02/heroku-enterprise-accounts-teams.mp4",
+              posterUrl: "https://heroku-dev-rel-booth-videos.s3.amazonaws.com/2019-12-02/title-cards/go/enterprise-go.png"
+            }
+          ]
+        }
+      ]
     }
   ]
 };
