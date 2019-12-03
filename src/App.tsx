@@ -6,19 +6,26 @@ import { default as mainConfig } from "./config";
 import VideoDownloader from "./VideoDownloader";
 
 const App: React.FC = () => {
-  const [config, setConfig] = useState(mainConfig);
+  const [config] = useState(mainConfig);
 
-  function getVideoUrlsFromConfig() {
+  function getDownloaderInfoFromConfig() {
     const urls: string[] = [];
+    const languages: string[] = [];
+
     config.sections.forEach(section => {
       section.videos.forEach(video => {
         video.videos.forEach(languageVideo => {
           urls.push(languageVideo.url);
           urls.push(languageVideo.posterUrl);
+          languages.push(languageVideo.language);
         });
       });
     });
-    return Array.from(new Set(urls));
+
+    return {
+      urls: Array.from(new Set(urls)),
+      languages: Array.from(new Set(languages))
+    };
   }
 
   return (
@@ -28,7 +35,7 @@ const App: React.FC = () => {
         <MalibuSprites set="marketing" />
         <Switch>
           <Route path="/" exact>
-            <VideoDownloader videos={getVideoUrlsFromConfig()} />
+            <VideoDownloader {...getDownloaderInfoFromConfig()} />
           </Route>
           <Route path="/viewer">
             <Screencast config={config} />

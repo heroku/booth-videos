@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { keys, set, clear } from "idb-keyval";
 import { Link } from "react-router-dom";
+import cx from "classnames";
 import "./VideoDownloader.css";
 import { MalibuIcon } from "@heroku/react-malibu";
 import { ReactComponent as Logo } from "./logo.svg";
@@ -10,6 +11,10 @@ type DownloadStatus = "queued" | "downloading" | "downloaded" | "error";
 interface Status {
   status: DownloadStatus;
   message?: string;
+}
+
+interface Progress {
+  [key: string]: Status;
 }
 
 interface DownloadStatusProps {
@@ -34,19 +39,24 @@ const DownloadStatusIndicator: React.FC<DownloadStatusProps> = ({ status }) => {
 };
 
 interface VideoDownloaderProps {
-  videos: string[];
+  urls: string[];
+  languages: string[];
 }
-const VideoDownloader: React.FC<VideoDownloaderProps> = ({ videos }) => {
-  const [progress, setProgress] = useState({} as {
-    [key: string]: Status;
-  });
+const VideoDownloader: React.FC<VideoDownloaderProps> = ({
+  urls,
+  languages
+}) => {
+  const [progress, setProgress] = useState({
+    initial: { status: "queued" }
+  } as Progress);
   const [isDownloading, setIsDownloading] = useState(false);
+  const [defaultLanguage, setDefaultLanguage] = useState(languages[0]);
 
   useEffect(() => {
     async function initialSetup(vids: string[]) {
       const existingKeys = await keys();
       setProgress(
-        vids.reduce<typeof progress>((a, b) => {
+        vids.reduce<Progress>((a, b) => {
           a[b] =
             existingKeys.indexOf(b) > -1
               ? { status: "downloaded" }
@@ -55,13 +65,13 @@ const VideoDownloader: React.FC<VideoDownloaderProps> = ({ videos }) => {
         }, {})
       );
     }
-    initialSetup(videos);
-  }, [progress, videos]);
+    initialSetup(urls);
+  }, [urls]);
 
   async function download() {
     setIsDownloading(true);
     const existingKeys = await keys();
-    for (const videoUrl of videos.sort()) {
+    for (const videoUrl of urls.sort()) {
       if (existingKeys.indexOf(videoUrl) === -1) {
         setProgress(progress => ({
           ...progress,
@@ -91,26 +101,39 @@ const VideoDownloader: React.FC<VideoDownloaderProps> = ({ videos }) => {
     setIsDownloading(false);
   }
 
-  function allVideosDownloaded() {
-    for (let [key, value] of Object.entries(progress)) {
-      if (value.status !== "downloaded") {
-        return false;
-      }
-    }
-
-    return true;
-  }
+  const allVideosDownloaded = Object.entries(progress).every(
+    ([, value]) => value.status === "downloaded"
+  );
 
   return (
     <div className="videodownloader-container">
       <section className="videodownloader-main">
         <header className="videodownloader-header">
-          <button disabled={isDownloading} onClick={download}>
+          <button
+            disabled={isDownloading}
+            onClick={download}
+            className="button"
+          >
             Download Videos
           </button>
           <h1>Videos</h1>
-          <Link to="/viewer">
-            <button disabled={!allVideosDownloaded()}>Go to view</button>
+          <select
+            onChange={e => setDefaultLanguage(e.target.value)}
+            value={defaultLanguage}
+          >
+            {languages.map(language => (
+              <option value={language} key={language}>
+                {language}
+              </option>
+            ))}
+          </select>
+          <Link
+            className={cx("button", !allVideosDownloaded && "disabled")}
+            {...(allVideosDownloaded
+              ? { to: `/viewer?default_lang=${defaultLanguage}` }
+              : { to: "/" })}
+          >
+            Go to view
           </Link>
         </header>
         {Object.keys(progress)

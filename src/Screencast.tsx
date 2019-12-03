@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { MalibuIcon } from "@heroku/react-malibu";
 import BlobVideo from "./BlobVideo";
-import { useHistory } from "react-router-dom";
+import { useLocation } from "react-router-dom";
+import qs from "query-string";
 import { VideosConfig, VideoLanguage } from "./types";
 import { ReactComponent as Logo } from "./logo.svg";
 import "./Screencast.css";
@@ -18,12 +19,9 @@ const LANGUAGES: Record<VideoLanguage, string> = {
 };
 
 const LongPressLogo: React.FC = () => {
-  const history = useHistory();
-
   let timer: number;
   function onLongPress() {
     timer = window.setTimeout(() => {
-      // history.push("/");
       window.location.reload();
     }, 5000);
   }
@@ -54,8 +52,7 @@ const ScreencastLanguagesList: React.FC<ScreencastLanguagesListProps> = ({
 }) => (
   <div className="screencast-languages-list">
     {languages.map(lang => (
-      <a
-        href="#"
+      <button
         onClick={() => {
           onLanguageChange(lang);
         }}
@@ -73,7 +70,7 @@ const ScreencastLanguagesList: React.FC<ScreencastLanguagesListProps> = ({
         {LANGUAGES.hasOwnProperty(lang)
           ? LANGUAGES[lang as VideoLanguage]
           : lang}
-      </a>
+      </button>
     ))}
   </div>
 );
@@ -82,14 +79,22 @@ interface Props {
   config: VideosConfig;
 }
 const Screencast: React.FC<Props> = ({ config }) => {
+  const defaultLanguage = qs.parse(useLocation().search).default_lang;
   const [
     { activeSection, activeVideo, activeLanguageVideo },
     setState
   ] = useState({
     activeSection: config.sections[0],
     activeVideo: config.sections[0].videos[0],
-    activeLanguageVideo: config.sections[0].videos[0].videos[0]
+    activeLanguageVideo: findDefaultLanguageVideo()
   });
+
+  function findDefaultLanguageVideo() {
+    const videos = config.sections[0].videos[0].videos;
+    const defaultLanguageVideo =
+      defaultLanguage && videos.find(v => v.language === defaultLanguage);
+    return defaultLanguageVideo || videos[0];
+  }
 
   function availableLanguages() {
     const languages: string[] = [];
