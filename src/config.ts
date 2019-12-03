@@ -87,6 +87,47 @@ const config: VideosConfig = {
               posterUrl: "https://heroku-dev-rel-booth-videos.s3.amazonaws.com/2019-12-02/title-cards/go/go-2-cd-with-github.png"
             }
           ]
+        },
+        {
+          name: "CI/CD: Pipeline & Review Apps",
+          videos: [
+            {
+              language: "node",
+              url:
+              "https://heroku-dev-rel-booth-videos.s3.amazonaws.com/2019-12-02/heroku-ci-cd-pipelines.mp4",
+              posterUrl: "https://heroku-dev-rel-booth-videos.s3.amazonaws.com/2019-12-02/title-cards/node/ci-cd-node.png"
+            },
+            {
+              language: "ruby",
+              url:
+              "https://heroku-dev-rel-booth-videos.s3.amazonaws.com/2019-12-02/heroku-ci-cd-pipelines.mp4",
+              posterUrl: "https://heroku-dev-rel-booth-videos.s3.amazonaws.com/2019-12-02/title-cards/ruby/ci-cd-ruby.png"
+            },
+            {
+              language: "java",
+              url:
+              "https://heroku-dev-rel-booth-videos.s3.amazonaws.com/2019-12-02/heroku-ci-cd-pipelines.mp4",
+              posterUrl: "https://heroku-dev-rel-booth-videos.s3.amazonaws.com/2019-12-02/title-cards/java/ci-cd-java.png"
+            },
+            {
+              language: "php",
+              url:
+              "https://heroku-dev-rel-booth-videos.s3.amazonaws.com/2019-12-02/heroku-ci-cd-pipelines.mp4",
+              posterUrl: "https://heroku-dev-rel-booth-videos.s3.amazonaws.com/2019-12-02/title-cards/php/ci-cd-php.png"
+            },
+            {
+              language: "python",
+              url:
+              "https://heroku-dev-rel-booth-videos.s3.amazonaws.com/2019-12-02/heroku-ci-cd-pipelines.mp4",
+              posterUrl: "https://heroku-dev-rel-booth-videos.s3.amazonaws.com/2019-12-02/title-cards/python/ci-cd-python.png"
+            },
+            {
+              language: "go",
+              url:
+                "https://heroku-dev-rel-booth-videos.s3.amazonaws.com/2019-12-02/heroku-ci-cd-pipelines.mp4",
+              posterUrl: "https://heroku-dev-rel-booth-videos.s3.amazonaws.com/2019-12-02/title-cards/go/ci-cd-go.png"
+            }
+          ]
         }
       ]
     },
@@ -258,6 +299,41 @@ const config: VideosConfig = {
               language: "go",
               url: "https://heroku-dev-rel-booth-videos.s3.amazonaws.com/2019-12-02/heroku-enterprise-private-spaces.mp4",
               posterUrl: "https://heroku-dev-rel-booth-videos.s3.amazonaws.com/2019-12-02/title-cards/go/private-spaces-go.png"
+            }
+          ]
+        },
+        {
+          name: "Shield Private Spaces",
+          videos: [
+            {
+              language: "node",
+              url: "https://heroku-dev-rel-booth-videos.s3.amazonaws.com/2019-12-02/heroku-shield-private-spaces.mp4",
+              posterUrl: "https://heroku-dev-rel-booth-videos.s3.amazonaws.com/2019-12-02/title-cards/node/shield-node.png"
+            },
+            {
+              language: "ruby",
+              url: "https://heroku-dev-rel-booth-videos.s3.amazonaws.com/2019-12-02/heroku-shield-private-spaces.mp4",
+              posterUrl: "https://heroku-dev-rel-booth-videos.s3.amazonaws.com/2019-12-02/title-cards/ruby/shield-ruby.png"
+            },
+            {
+              language: "java",
+              url: "https://heroku-dev-rel-booth-videos.s3.amazonaws.com/2019-12-02/heroku-shield-private-spaces.mp4",
+              posterUrl: "https://heroku-dev-rel-booth-videos.s3.amazonaws.com/2019-12-02/title-cards/java/shield-java.png"
+            },
+            {
+              language: "php",
+              url: "https://heroku-dev-rel-booth-videos.s3.amazonaws.com/2019-12-02/heroku-shield-private-spaces.mp4",
+              posterUrl: "https://heroku-dev-rel-booth-videos.s3.amazonaws.com/2019-12-02/title-cards/php/shield-php.png"
+            },
+            {
+              language: "python",
+              url: "https://heroku-dev-rel-booth-videos.s3.amazonaws.com/2019-12-02/heroku-shield-private-spaces.mp4",
+              posterUrl: "https://heroku-dev-rel-booth-videos.s3.amazonaws.com/2019-12-02/title-cards/python/shield-python.png"
+            },
+            {
+              language: "go",
+              url: "https://heroku-dev-rel-booth-videos.s3.amazonaws.com/2019-12-02/heroku-shield-private-spaces.mp4",
+              posterUrl: "https://heroku-dev-rel-booth-videos.s3.amazonaws.com/2019-12-02/title-cards/go/shield-go.png"
             }
           ]
         },
