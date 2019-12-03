@@ -129,10 +129,12 @@ const VideoDownloader: React.FC<VideoDownloaderProps> = ({
             ))}
           </select>
           <Link
-            className={cx("button", !allVideosDownloaded && "disabled")}
-            {...(allVideosDownloaded
-              ? { to: `/viewer?default_lang=${defaultLanguage}` }
-              : { to: "/" })}
+            className={cx("button", { disabled: !allVideosDownloaded })}
+            to={
+              allVideosDownloaded
+                ? `/viewer?default_lang=${defaultLanguage}`
+                : "/"
+            }
           >
             Go to view
           </Link>
