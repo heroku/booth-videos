@@ -57,9 +57,9 @@ const ScreencastLanguagesList: React.FC<ScreencastLanguagesListProps> = ({
         onClick={() => {
           onLanguageChange(lang);
         }}
-        className={`js-language-switcher screencast-language${
-          activeLanguage === lang ? " active" : ""
-        }`}
+        className={cx("js-language-switcher", "screencast-language", {
+          active: activeLanguage === lang
+        })}
         data-language={lang}
         key={lang}
       >
@@ -198,12 +198,11 @@ const Screencast: React.FC<Props> = ({ config }) => {
               {section.videos.map(video => (
                 <span
                   key={`${section.name}${video.name}`}
-                  className={
-                    activeSection.name === section.name &&
-                    activeVideo.name === video.name
-                      ? "sidebar-video-name playing"
-                      : "sidebar-video-name"
-                  }
+                  className={cx("sidebar-video-name", {
+                    playing:
+                      activeSection.name === section.name &&
+                      activeVideo.name === video.name
+                  })}
                 >
                   <span className="video-marker" />
                   <a
