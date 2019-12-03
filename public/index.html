@@ -1,62 +1,48 @@
+<!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>ServiceWorker and DOM</title>
-</head>
-<body>
-  <h1>ServiceWorker and DOM</h1>
-  <p>
-    This example contains three JS files:
-  </p>
-  <ul>
-    <li><a href="/app.js">/app.js</a>: typical JS code with events connected to the DOM</li>
-    <li><a href="/sw.js">/sw.js</a>: a Service Worker whose main job is to fetch and persist all the assets needed to show the app offline</li>
-    <li>idb-keyval-iife.js, a standalone version of <a href="https://github.com/jakearchibald/idb-keyval">idb-keyval</a> used in the ServiceWorker to easily use IndexedDB as a key-value store, where we cached the videos</li>
-  </ul>
+  <head>
+    <meta charset="utf-8" />
+    <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <meta name="theme-color" content="#000000" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <!--
+      manifest.json provides metadata used when your web app is installed on a
+      user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
+    -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5" />
+    <meta name="apple-mobile-web-app-title" content="Videos" />
+    <meta name="application-name" content="Videos" />
+    <meta name="msapplication-TileColor" content="#cccccc" />
+    <meta name="theme-color" content="#ffffff" />
+    <!--
+      Notice the use of %PUBLIC_URL% in the tags above.
+      It will be replaced with the URL of the `public` folder during the build.
+      Only files inside the `public` folder can be referenced from the HTML.
 
-  <p>
-    The UI has the following elements:
-  </p>
+      Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
+      work correctly both with client-side routing and a non-root public URL.
+      Learn how to configure a non-root public URL by running `npm run build`.
+    -->
+    <title>Heroku Product Videos</title>
+  </head>
+  <body>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div id="root"></div>
+    <!--
+      This HTML file is a template.
+      If you open it directly in the browser, you will see an empty page.
 
-  <ul>
-    <li>A video player not linked to any video yet</li>
-    <li>A button to cache all the videos that we'll play in the site: we could cache them by default when the site loads for the first time, but that may eat lots of MB from the visitor's data plan so it's probably better if we trigger this manually</li>
-    <li>A list of links that, once the videos have been cached, will be able to play each video in the player</li>
-    <li>Under the <code>&lt;hr&gt;</code> there's a log of what's happening in the app: I've found it handy when debugging in a mobile device</li>
-    <li>A better UI displaying the progress of the caching process so we know for sure when all the videos have been loaded</li>
-  </ul>
+      You can add webfonts, meta tags, or analytics to this file.
+      The build step will place the bundled scripts into the <body> tag.
 
-  <p>
-    Things that I haven't been able to work on yet:
-  </p>
-
-  <ul>
-    <li>In the ServiceWorker, use the install/fetch event handlers to cache the HTML, JS and images you may add, so everything can be run offline</li>
-    <li>As mentioned in <a href="https://docs.google.com/document/d/1hLqTKWI4pI332zhRlp0FusjmV66ksW5mdprLcMSyLJ0/edit?ts=5d1ba1a2#heading=h.1vaiqow8e4ks">spec</a>, use JSON (or a JS object) to specify the video URLs (currently hardcoded at the top of the app.js file) and the chapters/lists they belong to</li>
-    <li>Use the JSON/JS object to generate the UI that will allow to switch between videos</li>
-    <li>Port some of my old-style JS to ES5: arrow functions, forEach... all those should be supported by all the modern browsers that support ServiceWorkers</li>
-  </ul>
-
-  <p>
-    <button class="cache-all-videos">Cache all the videos</button>
-  </p>
-
-  <ul>
-    <li><a href="#" class="jump-video" data-video-url="https://booth-videos.s3.us-east-2.amazonaws.com/go-deploy.mp4">Go - deploy</a></li>
-    <li><a href="#" class="jump-video" data-video-url="https://booth-videos.s3.us-east-2.amazonaws.com/go-addons.mp4">Go - add-ons</a></li>
-    <li><a href="#" class="jump-video" data-video-url="https://booth-videos.s3.us-east-2.amazonaws.com/go-scale.mp4">Go - scale</a></li>
-    <li><a href="#" class="jump-video" data-video-url="https://booth-videos.s3.us-east-2.amazonaws.com/cd-github.mp4">CD - GitHub</a></li>
-  </ul>
-
-  <video controls playsinline muted="true" width="300">
-    <source>
-  </video>
-
-  <hr>
-
-  <pre class='log-ui'></pre>
-  <script src="/app.js"></script>
-</body>
+      To begin the development, run `npm start` or `yarn start`.
+      To create a production bundle, use `npm run build` or `yarn build`.
+    -->
+  </body>
 </html>
