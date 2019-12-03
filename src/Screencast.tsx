@@ -110,7 +110,7 @@ const EasterEgg: React.FC<EasterEggProps> = ({ language }) => {
     if (!show) {
       const timeout = setTimeout(
         () => setShow(true),
-        random(ms("1s"), ms("2s"))
+        random(ms("2m"), ms("4m"))
       );
       return () => clearTimeout(timeout);
     }
