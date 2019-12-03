@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import { MalibuIcon } from "@heroku/react-malibu";
 import BlobVideo from "./BlobVideo";
+import { useLocation } from "react-router-dom";
+import qs from "query-string";
+import cx from "classnames";
 import { VideosConfig, VideoLanguage } from "./types";
 import { ReactComponent as Logo } from "./logo.svg";
 import "./Screencast.css";
@@ -16,14 +19,11 @@ const LANGUAGES: Record<VideoLanguage, string> = {
   go: "Go"
 };
 
-interface LongPressLogoProps {
-  goToView: () => void;
-}
-const LongPressLogo: React.FC<LongPressLogoProps> = ({ goToView }) => {
+const LongPressLogo: React.FC = () => {
   let timer: number;
   function onLongPress() {
     timer = window.setTimeout(() => {
-      goToView();
+      window.location.reload();
     }, 5000);
   }
 
@@ -42,9 +42,9 @@ const LongPressLogo: React.FC<LongPressLogoProps> = ({ goToView }) => {
 };
 
 interface ScreencastLanguagesListProps {
-  languages: string[];
-  activeLanguage: string;
-  onLanguageChange: (lang: string) => void;
+  languages: VideoLanguage[];
+  activeLanguage: VideoLanguage;
+  onLanguageChange: (lang: VideoLanguage) => void;
 }
 const ScreencastLanguagesList: React.FC<ScreencastLanguagesListProps> = ({
   languages,
@@ -53,14 +53,13 @@ const ScreencastLanguagesList: React.FC<ScreencastLanguagesListProps> = ({
 }) => (
   <div className="screencast-languages-list">
     {languages.map(lang => (
-      <a
-        href="#"
+      <button
         onClick={() => {
           onLanguageChange(lang);
         }}
-        className={`js-language-switcher screencast-language${
-          activeLanguage === lang ? " active" : ""
-        }`}
+        className={cx("js-language-switcher", "screencast-language", {
+          active: activeLanguage === lang
+        })}
         data-language={lang}
         key={lang}
       >
@@ -72,27 +71,35 @@ const ScreencastLanguagesList: React.FC<ScreencastLanguagesListProps> = ({
         {LANGUAGES.hasOwnProperty(lang)
           ? LANGUAGES[lang as VideoLanguage]
           : lang}
-      </a>
+      </button>
     ))}
   </div>
 );
 
 interface Props {
   config: VideosConfig;
-  goToView: () => void;
 }
-const Screencast: React.FC<Props> = ({ config, goToView }) => {
+const Screencast: React.FC<Props> = ({ config }) => {
+  const defaultLanguage = qs.parse(useLocation().search)
+    .default_lang as VideoLanguage;
   const [
     { activeSection, activeVideo, activeLanguageVideo },
     setState
   ] = useState({
     activeSection: config.sections[0],
     activeVideo: config.sections[0].videos[0],
-    activeLanguageVideo: config.sections[0].videos[0].videos[0]
+    activeLanguageVideo: findDefaultLanguageVideo()
   });
 
+  function findDefaultLanguageVideo() {
+    const videos = config.sections[0].videos[0].videos;
+    const defaultLanguageVideo =
+      defaultLanguage && videos.find(v => v.language === defaultLanguage);
+    return defaultLanguageVideo || videos[0];
+  }
+
   function availableLanguages() {
-    const languages: string[] = [];
+    const languages: VideoLanguage[] = [];
     activeVideo.videos.forEach(video => {
       languages.push(video.language);
     });
@@ -169,12 +176,11 @@ const Screencast: React.FC<Props> = ({ config, goToView }) => {
               {section.videos.map(video => (
                 <span
                   key={`${section.name}${video.name}`}
-                  className={
-                    activeSection.name === section.name &&
-                    activeVideo.name === video.name
-                      ? "sidebar-video-name playing"
-                      : "sidebar-video-name"
-                  }
+                  className={cx("sidebar-video-name", {
+                    playing:
+                      activeSection.name === section.name &&
+                      activeVideo.name === video.name
+                  })}
                 >
                   <span className="video-marker" />
                   <a
@@ -203,7 +209,7 @@ const Screencast: React.FC<Props> = ({ config, goToView }) => {
         <ScreencastLanguagesList
           activeLanguage={activeLanguageVideo.language}
           languages={availableLanguages()}
-          onLanguageChange={(lang: string) => {
+          onLanguageChange={(lang: VideoLanguage) => {
             const newLanguageVideo = activeVideo.videos.filter(
               v => v.language === lang
             );
@@ -218,7 +224,7 @@ const Screencast: React.FC<Props> = ({ config, goToView }) => {
         />
       </section>
       <section className="footer-logo">
-        <LongPressLogo goToView={goToView} />
+        <LongPressLogo />
       </section>
     </div>
   );

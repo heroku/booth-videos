@@ -33,11 +33,14 @@
   }
 }
 .screencast-language {
+  font-size: 16px;
   padding: 0px 16px;
   display: inline-block;
   position: relative;
   text-decoration: none;
   color: rgba(255, 255, 255, 0.5);
+  cursor: pointer;
+  background: none;
 }
 .screencast-language .icon {
   width: 16px;

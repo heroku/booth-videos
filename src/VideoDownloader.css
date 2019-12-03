@@ -24,7 +24,7 @@
   font-size: 30px;
 }
 
-.videodownloader-header button {
+.videodownloader-header .button {
   background-color: rgb(32, 27, 65);
   color: white;
   text-transform: uppercase;
@@ -35,9 +35,25 @@
   letter-spacing: 3px;
   padding: 30px 0;
   cursor: pointer;
+  text-align: center;
+  text-decoration: none;
 }
 
-.videodownloader-header button:disabled {
+.videodownloader-header select {
+  background-color: rgb(32, 27, 65);
+  color: white;
+  border: 0;
+  border-radius: 3px;
+  min-width: 100px;
+  margin-right: 13px;
+  text-align: center;
+  font-size: 20px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
+
+.videodownloader-header .button:disabled,
+.videodownloader-header .button.disabled {
   opacity: 0.5;
   cursor: not-allowed;
 }

@@ -1,5 +1,9 @@
 import { VideosConfig } from "./types";
 
+const envConfig: VideosConfig = process.env.REACT_APP_VIDEO_CONFIG
+  ? JSON.parse(process.env.REACT_APP_VIDEO_CONFIG)
+  : {};
+
 const config: VideosConfig = {
   autoplay: false,
   sections: [
@@ -377,4 +381,4 @@ const config: VideosConfig = {
   ]
 };
 
-export default config;
+export default Object.assign({}, config, envConfig);
