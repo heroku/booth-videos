@@ -148,9 +148,10 @@ const VideoDownloader: React.FC<VideoDownloaderProps> = ({
                 {progress[url].message && <p>{`${progress[url].message}`}</p>}
               </div>
               <div
-                className={`videodownloader-item-status${
-                  progress[url].status === "error" ? " error" : ""
-                }${progress[url].status === "queued" ? " queued" : ""}`}
+                className={cx("videodownloader-item-status", {
+                  error: progress[url].status === "error",
+                  queued: progress[url].status === "queued"
+                })}
               >
                 <DownloadStatusIndicator status={progress[url]} />
               </div>

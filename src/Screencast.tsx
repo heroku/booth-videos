@@ -3,6 +3,7 @@ import { MalibuIcon } from "@heroku/react-malibu";
 import BlobVideo from "./BlobVideo";
 import { useLocation } from "react-router-dom";
 import qs from "query-string";
+import cx from "classnames";
 import { VideosConfig, VideoLanguage } from "./types";
 import { ReactComponent as Logo } from "./logo.svg";
 import "./Screencast.css";
@@ -56,9 +57,9 @@ const ScreencastLanguagesList: React.FC<ScreencastLanguagesListProps> = ({
         onClick={() => {
           onLanguageChange(lang);
         }}
-        className={`js-language-switcher screencast-language${
-          activeLanguage === lang ? " active" : ""
-        }`}
+        className={cx("js-language-switcher", "screencast-language", {
+          active: activeLanguage === lang
+        })}
         data-language={lang}
         key={lang}
       >
@@ -175,12 +176,11 @@ const Screencast: React.FC<Props> = ({ config }) => {
               {section.videos.map(video => (
                 <span
                   key={`${section.name}${video.name}`}
-                  className={
-                    activeSection.name === section.name &&
-                    activeVideo.name === video.name
-                      ? "sidebar-video-name playing"
-                      : "sidebar-video-name"
-                  }
+                  className={cx("sidebar-video-name", {
+                    playing:
+                      activeSection.name === section.name &&
+                      activeVideo.name === video.name
+                  })}
                 >
                   <span className="video-marker" />
                   <a
