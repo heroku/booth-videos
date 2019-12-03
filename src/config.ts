@@ -9,9 +9,9 @@ const config: VideosConfig = {
   languageEasterEggs: {
     node: false,
     ruby: false,
-    java: true,
-    php: true,
-    python: true,
+    java: false,
+    php: false,
+    python: false,
     go: false
   },
   sections: [

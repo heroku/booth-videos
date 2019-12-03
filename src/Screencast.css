@@ -173,8 +173,6 @@
 }
 
 .easter-egg {
-  /* TODO: remove display none and update css for easter egg images */
-  display: block;
   right: 20px;
   top: 0px;
   position: absolute;
