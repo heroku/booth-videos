@@ -2,9 +2,10 @@ import React, { useEffect, useState } from "react";
 import { keys, set, clear } from "idb-keyval";
 import { Link } from "react-router-dom";
 import cx from "classnames";
-import "./VideoDownloader.css";
 import { MalibuIcon } from "@heroku/react-malibu";
+import { VideoLanguage } from "./types";
 import { ReactComponent as Logo } from "./logo.svg";
+import "./VideoDownloader.css";
 
 type DownloadStatus = "queued" | "downloading" | "downloaded" | "error";
 
@@ -40,7 +41,7 @@ const DownloadStatusIndicator: React.FC<DownloadStatusProps> = ({ status }) => {
 
 interface VideoDownloaderProps {
   urls: string[];
-  languages: string[];
+  languages: VideoLanguage[];
 }
 const VideoDownloader: React.FC<VideoDownloaderProps> = ({
   urls,
@@ -118,7 +119,7 @@ const VideoDownloader: React.FC<VideoDownloaderProps> = ({
           </button>
           <h1>Videos</h1>
           <select
-            onChange={e => setDefaultLanguage(e.target.value)}
+            onChange={e => setDefaultLanguage(e.target.value as VideoLanguage)}
             value={defaultLanguage}
           >
             {languages.map(language => (

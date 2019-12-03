@@ -41,9 +41,9 @@ const LongPressLogo: React.FC = () => {
 };
 
 interface ScreencastLanguagesListProps {
-  languages: string[];
-  activeLanguage: string;
-  onLanguageChange: (lang: string) => void;
+  languages: VideoLanguage[];
+  activeLanguage: VideoLanguage;
+  onLanguageChange: (lang: VideoLanguage) => void;
 }
 const ScreencastLanguagesList: React.FC<ScreencastLanguagesListProps> = ({
   languages,
@@ -79,7 +79,8 @@ interface Props {
   config: VideosConfig;
 }
 const Screencast: React.FC<Props> = ({ config }) => {
-  const defaultLanguage = qs.parse(useLocation().search).default_lang;
+  const defaultLanguage = qs.parse(useLocation().search)
+    .default_lang as VideoLanguage;
   const [
     { activeSection, activeVideo, activeLanguageVideo },
     setState
@@ -97,7 +98,7 @@ const Screencast: React.FC<Props> = ({ config }) => {
   }
 
   function availableLanguages() {
-    const languages: string[] = [];
+    const languages: VideoLanguage[] = [];
     activeVideo.videos.forEach(video => {
       languages.push(video.language);
     });
@@ -208,7 +209,7 @@ const Screencast: React.FC<Props> = ({ config }) => {
         <ScreencastLanguagesList
           activeLanguage={activeLanguageVideo.language}
           languages={availableLanguages()}
-          onLanguageChange={(lang: string) => {
+          onLanguageChange={(lang: VideoLanguage) => {
             const newLanguageVideo = activeVideo.videos.filter(
               v => v.language === lang
             );

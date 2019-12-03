@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { MalibuSprites } from "@heroku/react-malibu";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { VideoLanguage } from "./types";
 import Screencast from "./Screencast";
 import { default as mainConfig } from "./config";
 import VideoDownloader from "./VideoDownloader";
@@ -10,7 +11,7 @@ const App: React.FC = () => {
 
   function getDownloaderInfoFromConfig() {
     const urls: string[] = [];
-    const languages: string[] = [];
+    const languages: VideoLanguage[] = [];
 
     config.sections.forEach(section => {
       section.videos.forEach(video => {
