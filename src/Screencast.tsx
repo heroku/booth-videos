@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { MalibuIcon } from "@heroku/react-malibu";
 import BlobVideo from "./BlobVideo";
 import { useLocation } from "react-router-dom";
 import qs from "query-string";
+import cx from "classnames";
 import { VideosConfig, VideoLanguage } from "./types";
 import { ReactComponent as Logo } from "./logo.svg";
 import "./Screencast.css";
@@ -75,6 +76,24 @@ const ScreencastLanguagesList: React.FC<ScreencastLanguagesListProps> = ({
   </div>
 );
 
+interface EasterEggProps {
+  language: VideoLanguage;
+}
+const EasterEgg: React.FC<EasterEggProps> = ({ language }) => {
+  const [show, setShow] = useState(false);
+  const ref = useRef();
+
+  // useEffect(() => {
+  //   setTimeout(() => setShow(!show), 5 * 1000);
+  // }, [language, show]);
+
+  return (
+    <div ref={ref} className={cx("easter-egg", show && "show")}>
+      {language}
+    </div>
+  );
+};
+
 interface Props {
   config: VideosConfig;
 }
@@ -146,9 +165,9 @@ const Screencast: React.FC<Props> = ({ config }) => {
   return (
     <div className="container">
       <section className="screencast">
+        <EasterEgg language={activeLanguageVideo.language} />
         <div className="wrapper">
           <h2 className="video-name">{activeVideo.name}</h2>
-
           <div className="screencast-container has-spinner">
             <div className="spinner spinner-centered">
               <i className="spinner__dot spinner__dot--one" />

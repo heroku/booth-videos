@@ -169,6 +169,38 @@
   letter-spacing: 0.125em;
 }
 
+.easter-egg {
+  right: 20px;
+  top: 0px;
+  position: absolute;
+  height: 100px;
+  width: 100px;
+  background: green;
+  color: white;
+  text-align: center;
+  transform: translateY(-100%);
+  z-index: 100;
+}
+
+.easter-egg.show {
+  animation: 20s slide;
+}
+
+@keyframes slide {
+  0% {
+    transform: translateY(-100%);
+  }
+  10% {
+    transform: translateY(0);
+  }
+  90% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-100%);
+  }
+}
+
 .container {
   height: 100vh;
   display: grid;
