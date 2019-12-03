@@ -81,7 +81,11 @@ interface EasterEggProps {
 }
 const EasterEgg: React.FC<EasterEggProps> = ({ language }) => {
   const [show, setShow] = useState(false);
-  const ref = useRef();
+  const ref = useRef(null);
+
+  useEffect(() => {
+    console.log(ref);
+  }, [ref]);
 
   // useEffect(() => {
   //   setTimeout(() => setShow(!show), 5 * 1000);
