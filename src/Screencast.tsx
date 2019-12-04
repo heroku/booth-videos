@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { MalibuIcon } from "@heroku/react-malibu";
 import BlobVideo from "./BlobVideo";
-import { useLocation } from "react-router-dom";
+import { useLocation, useHistory } from "react-router-dom";
 import qs from "query-string";
 import cx from "classnames";
 import { VideosConfig, VideoLanguage } from "./types";
@@ -20,10 +20,12 @@ const LANGUAGES: Record<VideoLanguage, string> = {
 };
 
 const LongPressLogo: React.FC = () => {
+  const history = useHistory();
+
   let timer: number;
   function onLongPress() {
     timer = window.setTimeout(() => {
-      window.location.reload();
+      history.push("/");
     }, 5000);
   }
 
