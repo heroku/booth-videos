@@ -157,53 +157,6 @@ const config: VideosConfig = {
       name: "Manage",
       videos: [
         {
-          name: "Application Metrics",
-          videos: [
-            {
-              language: "node",
-              url:
-                "https://heroku-dev-rel-booth-videos.s3.amazonaws.com/2019-12-02/app-metrics.mp4",
-              posterUrl:
-                "https://heroku-dev-rel-booth-videos.s3.amazonaws.com/2019-12-02/title-cards/node/node-3-app-metrics.png"
-            },
-            {
-              language: "ruby",
-              url:
-                "https://heroku-dev-rel-booth-videos.s3.amazonaws.com/2019-12-02/app-metrics.mp4",
-              posterUrl:
-                "https://heroku-dev-rel-booth-videos.s3.amazonaws.com/2019-12-02/title-cards/ruby/ruby-3-app-metrics.png"
-            },
-            {
-              language: "java",
-              url:
-                "https://heroku-dev-rel-booth-videos.s3.amazonaws.com/2019-12-02/app-metrics.mp4",
-              posterUrl:
-                "https://heroku-dev-rel-booth-videos.s3.amazonaws.com/2019-12-02/title-cards/java/java-3-app-metrics.png"
-            },
-            {
-              language: "php",
-              url:
-                "https://heroku-dev-rel-booth-videos.s3.amazonaws.com/2019-12-02/app-metrics.mp4",
-              posterUrl:
-                "https://heroku-dev-rel-booth-videos.s3.amazonaws.com/2019-12-02/title-cards/php/php-3-app-metrics.png"
-            },
-            {
-              language: "python",
-              url:
-                "https://heroku-dev-rel-booth-videos.s3.amazonaws.com/2019-12-02/app-metrics.mp4",
-              posterUrl:
-                "https://heroku-dev-rel-booth-videos.s3.amazonaws.com/2019-12-02/title-cards/python/python-3-app-metrics.png"
-            },
-            {
-              language: "go",
-              url:
-                "https://heroku-dev-rel-booth-videos.s3.amazonaws.com/2019-12-02/app-metrics.mp4",
-              posterUrl:
-                "https://heroku-dev-rel-booth-videos.s3.amazonaws.com/2019-12-02/title-cards/go/go-3-app-metrics.png"
-            }
-          ]
-        },
-        {
           name: "Adding Add-ons",
           videos: [
             {
@@ -247,6 +200,53 @@ const config: VideosConfig = {
                 "https://heroku-dev-rel-booth-videos.s3.amazonaws.com/2019-12-02/go-addons.mp4",
               posterUrl:
                 "https://heroku-dev-rel-booth-videos.s3.amazonaws.com/2019-12-02/title-cards/go/go-4-addons.png"
+            }
+          ]
+        },
+        {
+          name: "Application Metrics",
+          videos: [
+            {
+              language: "node",
+              url:
+                "https://heroku-dev-rel-booth-videos.s3.amazonaws.com/2019-12-02/app-metrics.mp4",
+              posterUrl:
+                "https://heroku-dev-rel-booth-videos.s3.amazonaws.com/2019-12-02/title-cards/node/node-3-app-metrics.png"
+            },
+            {
+              language: "ruby",
+              url:
+                "https://heroku-dev-rel-booth-videos.s3.amazonaws.com/2019-12-02/app-metrics.mp4",
+              posterUrl:
+                "https://heroku-dev-rel-booth-videos.s3.amazonaws.com/2019-12-02/title-cards/ruby/ruby-3-app-metrics.png"
+            },
+            {
+              language: "java",
+              url:
+                "https://heroku-dev-rel-booth-videos.s3.amazonaws.com/2019-12-02/app-metrics.mp4",
+              posterUrl:
+                "https://heroku-dev-rel-booth-videos.s3.amazonaws.com/2019-12-02/title-cards/java/java-3-app-metrics.png"
+            },
+            {
+              language: "php",
+              url:
+                "https://heroku-dev-rel-booth-videos.s3.amazonaws.com/2019-12-02/app-metrics.mp4",
+              posterUrl:
+                "https://heroku-dev-rel-booth-videos.s3.amazonaws.com/2019-12-02/title-cards/php/php-3-app-metrics.png"
+            },
+            {
+              language: "python",
+              url:
+                "https://heroku-dev-rel-booth-videos.s3.amazonaws.com/2019-12-02/app-metrics.mp4",
+              posterUrl:
+                "https://heroku-dev-rel-booth-videos.s3.amazonaws.com/2019-12-02/title-cards/python/python-3-app-metrics.png"
+            },
+            {
+              language: "go",
+              url:
+                "https://heroku-dev-rel-booth-videos.s3.amazonaws.com/2019-12-02/app-metrics.mp4",
+              posterUrl:
+                "https://heroku-dev-rel-booth-videos.s3.amazonaws.com/2019-12-02/title-cards/go/go-3-app-metrics.png"
             }
           ]
         }
