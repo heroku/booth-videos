@@ -158,8 +158,8 @@ const VideoDownloader: React.FC<VideoDownloaderProps> = ({
         ))}
         <div>
           <button
-            onClick={() => {
-              clear();
+            onClick={async () => {
+              await clear();
               window.location.reload();
             }}
             className="clear-all-button"
