@@ -1,17 +1,15 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState } from "react";
 import { MalibuIcon } from "@heroku/react-malibu";
 import BlobVideo from "./BlobVideo";
 import { useLocation } from "react-router-dom";
 import qs from "query-string";
 import cx from "classnames";
-import ms from "ms";
 import { VideosConfig, VideoLanguage } from "./types";
 import { ReactComponent as Logo } from "./logo.svg";
+import EasterEgg from "./EasterEgg";
 import "./Screencast.css";
 
 // TODO: scroll video section into view
-
-const random = (min: number, max: number) => Math.random() * (max - min) + min;
 
 const LANGUAGES: Record<VideoLanguage, string> = {
   node: "Node",
@@ -78,48 +76,6 @@ const ScreencastLanguagesList: React.FC<ScreencastLanguagesListProps> = ({
     ))}
   </div>
 );
-
-interface EasterEggProps {
-  language: VideoLanguage;
-}
-const EasterEgg: React.FC<EasterEggProps> = ({ language }) => {
-  const [show, setShow] = useState(false);
-  const nodeRef = useRef(document.createElement("div"));
-  const languageRef = useRef("");
-
-  // Whenever an animation ends on the easter egg node, set the state to false
-  // which will trigger another animation to kick off another animation eventually
-  useEffect(() => {
-    const node = nodeRef.current;
-    const listener = () => setShow(false);
-    node.addEventListener("animationend", listener);
-    return () => node.removeEventListener("animationend", listener);
-  }, []);
-
-  // Language changes should reset animation state
-  useEffect(() => {
-    if (languageRef.current !== language) {
-      languageRef.current = language;
-      setShow(false);
-    }
-  }, [language]);
-
-  // Whenever the state is toggled off, a new animation will be triggered at a
-  // future random time
-  useEffect(() => {
-    if (!show) {
-      const timeout = setTimeout(
-        () => setShow(true),
-        random(ms("2m"), ms("4m"))
-      );
-      return () => clearTimeout(timeout);
-    }
-  }, [show]);
-
-  return (
-    <div ref={nodeRef} className={cx("easter-egg", language, { show })}></div>
-  );
-};
 
 interface Props {
   config: VideosConfig;
@@ -191,10 +147,10 @@ const Screencast: React.FC<Props> = ({ config }) => {
 
   return (
     <div className="container">
+      {config.languageEasterEggs[activeLanguageVideo.language] && (
+        <EasterEgg language={activeLanguageVideo.language} />
+      )}
       <section className="screencast">
-        {config.languageEasterEggs[activeLanguageVideo.language] && (
-          <EasterEgg language={activeLanguageVideo.language} />
-        )}
         <div className="wrapper">
           <h2 className="video-name">{activeVideo.name}</h2>
           <div className="screencast-container has-spinner">

@@ -172,55 +172,6 @@
   letter-spacing: 0.125em;
 }
 
-.easter-egg {
-  right: 20px;
-  top: 0px;
-  position: absolute;
-  height: 10px;
-  width: 10px;
-  background: green;
-  color: white;
-  text-align: center;
-  transform: translateY(-100%);
-  z-index: 100;
-}
-
-.easter-egg.node {
-}
-.easter-egg.ruby {
-}
-.easter-egg.java {
-}
-.easter-egg.php {
-}
-.easter-egg.python {
-}
-.easter-egg.go {
-}
-
-/* The timing of this animation should be how long it takes the easter egg to
- * animate in, stay visble, and animate out. The delay between iterations is
- * controlled in the JS
- */
-.easter-egg.show {
-  animation: 5s slide;
-}
-
-@keyframes slide {
-  0% {
-    transform: translateY(-100%);
-  }
-  4% {
-    transform: translateY(0);
-  }
-  96% {
-    transform: translateY(0);
-  }
-  100% {
-    transform: translateY(-100%);
-  }
-}
-
 .container {
   height: 100vh;
   display: grid;
