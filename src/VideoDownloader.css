@@ -50,6 +50,8 @@
   font-size: 20px;
   letter-spacing: 3px;
   text-transform: uppercase;
+  -webkit-appearance: none;
+  padding: 0 30px;
 }
 
 .videodownloader-header .button:disabled,

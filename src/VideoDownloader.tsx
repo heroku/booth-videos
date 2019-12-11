@@ -47,9 +47,7 @@ const VideoDownloader: React.FC<VideoDownloaderProps> = ({
   urls,
   languages
 }) => {
-  const [progress, setProgress] = useState({
-    initial: { status: "queued" }
-  } as Progress);
+  const [progress, setProgress] = useState({} as Progress);
   const [isDownloading, setIsDownloading] = useState(false);
   const [defaultLanguage, setDefaultLanguage] = useState(languages[0]);
 
@@ -102,16 +100,20 @@ const VideoDownloader: React.FC<VideoDownloaderProps> = ({
     setIsDownloading(false);
   }
 
-  const allVideosDownloaded = Object.entries(progress).every(
-    ([, value]) => value.status === "downloaded"
-  );
+  const progressUrls = Object.keys(progress);
+
+  const allVideosDownloaded =
+    progressUrls.length &&
+    Object.entries(progress).every(
+      ([, value]) => value.status === "downloaded"
+    );
 
   return (
     <div className="videodownloader-container">
       <section className="videodownloader-main">
         <header className="videodownloader-header">
           <button
-            disabled={isDownloading}
+            disabled={isDownloading || !progressUrls.length}
             onClick={download}
             className="button"
           >
@@ -139,24 +141,22 @@ const VideoDownloader: React.FC<VideoDownloaderProps> = ({
             Go to view
           </Link>
         </header>
-        {Object.keys(progress)
-          .sort()
-          .map(url => (
-            <div key={url} className="videodownloader-item">
-              <div className="videodownloader-item-url">
-                <p>{url}</p>
-                {progress[url].message && <p>{`${progress[url].message}`}</p>}
-              </div>
-              <div
-                className={cx("videodownloader-item-status", {
-                  error: progress[url].status === "error",
-                  queued: progress[url].status === "queued"
-                })}
-              >
-                <DownloadStatusIndicator status={progress[url]} />
-              </div>
+        {progressUrls.sort().map(url => (
+          <div key={url} className="videodownloader-item">
+            <div className="videodownloader-item-url">
+              <p>{url}</p>
+              {progress[url].message && <p>{`${progress[url].message}`}</p>}
             </div>
-          ))}
+            <div
+              className={cx("videodownloader-item-status", {
+                error: progress[url].status === "error",
+                queued: progress[url].status === "queued"
+              })}
+            >
+              <DownloadStatusIndicator status={progress[url]} />
+            </div>
+          </div>
+        ))}
         <div>
           <button
             onClick={() => {
