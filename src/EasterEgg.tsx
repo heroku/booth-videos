@@ -7,10 +7,17 @@ import pythonImg from "./images/python.png";
 import "./EasterEgg.css";
 
 const random = (min: number, max: number) => {
+  if (min > max) {
+    [min, max] = [max, min];
+  }
   min = Math.ceil(min);
   max = Math.floor(max);
   return Math.floor(Math.random() * (max - min + 1)) + min;
 };
+
+const sample = (arr: any[]) => arr[random(0, arr.length - 1)];
+const fromBottom = (num: number) => window.innerHeight - num;
+const fromRight = (num: number) => window.innerWidth - num;
 
 const languageImages = {
   node: "",
@@ -34,20 +41,16 @@ function randomEnum<T>(anEnum: T): T[keyof T] {
 
 const getStyleFromPosition = (position: Position) => {
   if (position === Position.Top) {
-    return { left: random(20, window.innerWidth - 320) };
+    return {
+      left: random(20, fromRight(320))
+    };
   } else if (position === Position.Bottom) {
     return {
-      left: [
-        random(20, 100),
-        random(window.innerWidth - 420, window.innerWidth - 320)
-      ][random(0, 1)]
+      left: sample([random(20, 100), random(fromRight(320), fromRight(420))])
     };
   } else if (position === Position.Left) {
     return {
-      top: [
-        random(20, 100),
-        random(window.innerHeight - 220, window.innerHeight - 20)
-      ][random(0, 1)]
+      top: sample([random(20, 100), random(fromBottom(20), fromBottom(220))])
     };
   }
 };
