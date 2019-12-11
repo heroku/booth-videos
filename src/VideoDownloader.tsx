@@ -89,7 +89,6 @@ const VideoDownloader: React.FC<VideoDownloaderProps> = ({
             [videoUrl]: { status: "downloaded" }
           }));
         } catch (err) {
-          console.error(err);
           setProgress(progress => ({
             ...progress,
             [videoUrl]: { status: "error", message: err }

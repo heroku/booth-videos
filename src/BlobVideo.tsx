@@ -1,10 +1,49 @@
-import React, { useState, useEffect, useRef } from "react";
-import { get } from "idb-keyval";
-import blobImage from "./blobImage";
+import React, { useEffect, useState, useRef } from "react";
+import blobMedia from "./blobMedia";
 
-interface StoredVideo {
-  buffer: ArrayBuffer;
-  type: string;
+interface VideoProps {
+  src: string;
+  poster: string;
+}
+function useVideoBlob(src: string, poster: string): VideoProps {
+  const [video, setVideo] = useState({ src: "", poster: "" } as VideoProps);
+
+  useEffect(() => {
+    let isCancelled = false;
+    let srcUrl = "";
+    let posterUrl = "";
+
+    async function getBlobs() {
+      try {
+        // Safari has an issue with IDBTransacations hanging for concurrent operations.
+        // I was getting a hanging transaction at least 1 out of every 10 reloads in Safarai 13.0.3
+        // and found this corroborating the issue https://github.com/localForage/localForage/issues/824
+        // So for now always call these sequentially
+        srcUrl = await blobMedia(src);
+        posterUrl = await blobMedia(poster);
+
+        if (!isCancelled) {
+          setVideo({ src: srcUrl, poster: posterUrl });
+        }
+      } catch (e) {
+        if (!isCancelled) {
+          // The thrown error is likely due to Safari closing the IDB connection.
+          // Reloading the page re-establishes the connection.
+          window.location.reload();
+        }
+      }
+    }
+
+    getBlobs();
+
+    return () => {
+      isCancelled = true;
+      URL.revokeObjectURL(srcUrl);
+      URL.revokeObjectURL(posterUrl);
+    };
+  }, [src, poster]);
+
+  return video;
 }
 
 interface BlobVideoProps {
@@ -17,46 +56,18 @@ const BlobVideo: React.FC<BlobVideoProps> = ({
   posterUrl,
   onEnded
 }) => {
-  const [src, setSrc] = useState({ videoSrc: "", posterSrc: "" });
+  const video = useVideoBlob(videoUrl, posterUrl);
   const playerRef = useRef<HTMLVideoElement>(null);
+
   useEffect(() => {
-    async function setVideoSrc() {
-      try {
-        const posterSrc = await blobImage(posterUrl);
-        const videoBlob = await get<StoredVideo>(videoUrl);
-        const videoSrc = URL.createObjectURL(
-          new Blob([videoBlob.buffer], { type: videoBlob.type })
-        );
-        setSrc({ videoSrc, posterSrc });
-
-        if (onEnded && playerRef.current) {
-          playerRef.current.addEventListener("ended", onEnded);
-        }
-      } catch (err) {
-        // The thrown error is likely due to Safari closing the IDB connection.
-        // Reloading the page re-establishes the connection.
-        console.error(err);
-        window.location.reload();
-      }
-    }
-    setVideoSrc();
     const player = playerRef.current;
-    return () => {
-      if (onEnded && player) {
-        player.removeEventListener("ended", onEnded);
-      }
-    };
-  }, [videoUrl, posterUrl, setSrc, onEnded, playerRef]);
+    if (onEnded && player) {
+      player.addEventListener("ended", onEnded);
+      return () => player.removeEventListener("ended", onEnded);
+    }
+  }, [onEnded]);
 
-  return (
-    <video
-      autoPlay
-      ref={playerRef}
-      src={src.videoSrc}
-      controls={true}
-      poster={src.posterSrc}
-    />
-  );
+  return <video ref={playerRef} autoPlay controls={true} {...video} />;
 };
 
 export default BlobVideo;

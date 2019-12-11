@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useCallback } from "react";
 import { MalibuIcon } from "@heroku/react-malibu";
 import BlobVideo from "./BlobVideo";
 import { useLocation, useHistory } from "react-router-dom";
@@ -108,7 +108,7 @@ const Screencast: React.FC<Props> = ({ config }) => {
     return Array.from(new Set(languages));
   }
 
-  function playNextVideo() {
+  const playNextVideo = useCallback(() => {
     const indexOfActiveVideo = activeSection.videos.findIndex(
       v => v.name === activeVideo.name
     );
@@ -144,7 +144,7 @@ const Screencast: React.FC<Props> = ({ config }) => {
         ].videos.filter(v => v.language === activeLanguageVideo.language)[0]
       });
     }
-  }
+  }, [config, activeLanguageVideo, activeSection, activeVideo]);
 
   return (
     <div className="container">
@@ -162,9 +162,7 @@ const Screencast: React.FC<Props> = ({ config }) => {
               <BlobVideo
                 videoUrl={activeLanguageVideo.url}
                 posterUrl={activeLanguageVideo.posterUrl}
-                onEnded={() => {
-                  playNextVideo();
-                }}
+                onEnded={playNextVideo}
               />
             </div>
           </div>
