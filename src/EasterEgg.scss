@@ -1,0 +1,94 @@
+$animation-show: 4.6;
+$animation-reveal: 0.2;
+$animation-length: $animation-show + ($animation-reveal * 2);
+
+@mixin slide-animation($name, $start, $end) {
+  $animation-start: $animation-reveal / $animation-length * 100;
+  $animation-end: 100 - ($animation-reveal / $animation-length * 100);
+
+  @at-root {
+    & {
+      transform: $start;
+    }
+
+    &.show {
+      animation: #{$animation-length}s $name;
+    }
+
+    @keyframes #{$name} {
+      0% {
+        transform: $start;
+      }
+      #{$animation-start}% {
+        transform: $end;
+      }
+      #{$animation-end}% {
+        transform: $end;
+      }
+      100% {
+        transform: $start;
+      }
+    }
+  }
+}
+
+.easter-egg {
+  position: absolute;
+  z-index: 100;
+
+  img {
+    width: 100px;
+  }
+
+  &.top {
+    top: 0px;
+
+    img {
+      transform: rotate(180deg);
+    }
+
+    @include slide-animation(
+      $name: "slide-top",
+      $start: translateY(-100%),
+      $end: translateY(0)
+    );
+  }
+
+  &.bottom {
+    bottom: 0px;
+
+    @include slide-animation(
+      $name: "slide-bottom",
+      $start: translateY(100%),
+      $end: translateY(0)
+    );
+  }
+
+  &.left {
+    left: 0;
+
+    img {
+      transform: rotate(90deg);
+    }
+
+    @include slide-animation(
+      $name: "slide-left",
+      $start: translateX(-100%),
+      $end: translateY(0)
+    );
+  }
+
+  &.right {
+    right: 0;
+
+    img {
+      transform: rotate(-90deg);
+    }
+
+    @include slide-animation(
+      $name: "slide-right",
+      $start: translateX(100%),
+      $end: translateY(0)
+    );
+  }
+}

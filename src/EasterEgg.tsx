@@ -4,7 +4,10 @@ import ms from "ms";
 import { VideoLanguage } from "./types";
 import dukeImg from "./images/duke.png";
 import pythonImg from "./images/python.png";
-import "./EasterEgg.css";
+import "./EasterEgg.scss";
+
+// Keep this in sync with whatever width is defined in CSS for the easter egg images
+const IMAGE_WIDTH = 100;
 
 const random = (min: number, max: number) => {
   if (min > max) {
@@ -14,10 +17,6 @@ const random = (min: number, max: number) => {
   max = Math.floor(max);
   return Math.floor(Math.random() * (max - min + 1)) + min;
 };
-
-const sample = (arr: any[]) => arr[random(0, arr.length - 1)];
-const fromBottom = (num: number) => window.innerHeight - num;
-const fromRight = (num: number) => window.innerWidth - num;
 
 const languageImages = {
   node: "",
@@ -31,7 +30,8 @@ const languageImages = {
 enum Position {
   Top = "top",
   Bottom = "bottom",
-  Left = "left"
+  Left = "left",
+  Right = "right"
 }
 
 function randomEnum<T>(anEnum: T): T[keyof T] {
@@ -40,19 +40,25 @@ function randomEnum<T>(anEnum: T): T[keyof T] {
 }
 
 const getStyleFromPosition = (position: Position) => {
-  if (position === Position.Top) {
-    return {
-      left: random(20, fromRight(320))
-    };
-  } else if (position === Position.Bottom) {
-    return {
-      left: sample([random(20, 100), random(fromRight(320), fromRight(420))])
-    };
-  } else if (position === Position.Left) {
-    return {
-      top: sample([random(20, 100), random(fromBottom(20), fromBottom(220))])
-    };
-  }
+  // Keep the image this far from the edge
+  const gutterFromEdge = 20;
+
+  // If the image is on top or bottom, the left position is randomized
+  // If its on the sides, then the top is randomized
+  const stylePosition =
+    position === Position.Top || position === Position.Bottom
+      ? Position.Left
+      : Position.Top;
+
+  // End position is calulated by the window and image dimensions
+  const end =
+    stylePosition === Position.Left
+      ? window.innerWidth - gutterFromEdge - IMAGE_WIDTH
+      : window.innerHeight - gutterFromEdge - IMAGE_WIDTH;
+
+  return {
+    [stylePosition]: random(gutterFromEdge, end)
+  };
 };
 
 interface EasterEggProps {
