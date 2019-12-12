@@ -4,7 +4,7 @@ $animation-length: $animation-show + ($animation-reveal * 2);
 
 @mixin slide-animation($name, $start, $end) {
   $animation-start: $animation-reveal / $animation-length * 100;
-  $animation-end: 100 - ($animation-reveal / $animation-length * 100);
+  $animation-end: 100 - $animation-start;
 
   @at-root {
     & {
