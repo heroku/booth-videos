@@ -16,7 +16,18 @@ export interface Section {
   videos: Video[];
 }
 
+export interface LanguageEasterEggs {
+  node: boolean;
+  ruby: boolean;
+  java: boolean;
+  php: boolean;
+  python: boolean;
+  go: boolean;
+}
+
 export interface VideosConfig {
   sections: Section[];
   autoplay: boolean;
+  languageEasterEggs: LanguageEasterEggs;
 }
+
