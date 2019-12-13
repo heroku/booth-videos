@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useMemo } from "react";
+import React, { useEffect } from "react";
 import { MalibuIcon } from "@heroku/react-malibu";
 import BlobVideo from "./BlobVideo";
 import { useLocation, useHistory } from "react-router-dom";
@@ -7,12 +7,13 @@ import cx from "classnames";
 import { VideosConfig, VideoLanguage, Downloads } from "./types";
 import { ReactComponent as Logo } from "./logo.svg";
 import { useHasDownloads } from "./useDownloads";
+import useVideos from "./useVideos";
 import EasterEgg from "./EasterEgg";
 import "./Screencast.css";
 
 // TODO: scroll video section into view
 
-const LANGUAGES: Record<VideoLanguage, string> = {
+const languageTitles: Record<VideoLanguage, string> = {
   node: "Node",
   ruby: "Ruby",
   java: "Java",
@@ -24,7 +25,7 @@ const LANGUAGES: Record<VideoLanguage, string> = {
 const LongPressLogo: React.FC = () => {
   const history = useHistory();
 
-  let timer: number;
+  let timer: number | null = null;
   function onLongPress() {
     timer = window.setTimeout(() => {
       history.push("/");
@@ -32,8 +33,18 @@ const LongPressLogo: React.FC = () => {
   }
 
   function onRelease() {
-    window.clearTimeout(timer);
+    if (timer) {
+      window.clearTimeout(timer);
+    }
   }
+
+  useEffect(() => {
+    return () => {
+      if (timer) {
+        window.clearTimeout(timer);
+      }
+    };
+  }, [timer]);
 
   return (
     <Logo
@@ -58,22 +69,21 @@ const ScreencastLanguagesList: React.FC<ScreencastLanguagesListProps> = ({
   <div className="screencast-languages-list">
     {languages.map(lang => (
       <button
+        key={lang}
         onClick={() => {
           onLanguageChange(lang);
         }}
-        className={cx("js-language-switcher", "screencast-language", {
+        className={cx("screencast-language", {
           active: activeLanguage === lang
         })}
-        data-language={lang}
-        key={lang}
       >
         <span className="video-marker" />
         <MalibuIcon
           name={`marketing-language-${lang}-48`}
           extraClasses="icon"
         />
-        {LANGUAGES.hasOwnProperty(lang)
-          ? LANGUAGES[lang as VideoLanguage]
+        {languageTitles.hasOwnProperty(lang)
+          ? languageTitles[lang as VideoLanguage]
           : lang}
       </button>
     ))}
@@ -85,70 +95,17 @@ interface Props {
   config: VideosConfig;
 }
 const Screencast: React.FC<Props> = ({ downloads, config }) => {
-  const defaultLanguage = qs.parse(useLocation().search)
-    .default_lang as VideoLanguage;
-
-  const defaultLanguageVideo = useMemo(() => {
-    const videos = config.sections[0].videos[0].videos;
-    const defaultLanguageVideo =
-      defaultLanguage && videos.find(v => v.language === defaultLanguage);
-    return defaultLanguageVideo || videos[0];
-  }, [config, defaultLanguage]);
-
-  const [
-    { activeSection, activeVideo, activeLanguageVideo },
-    setState
-  ] = useState({
-    activeSection: config.sections[0],
-    activeVideo: config.sections[0].videos[0],
-    activeLanguageVideo: defaultLanguageVideo
-  });
-
-  const availableLanguages = useMemo(() => {
-    const languages: VideoLanguage[] = [];
-    activeVideo.videos.forEach(video => {
-      languages.push(video.language);
-    });
-    return Array.from(new Set(languages));
-  }, [activeVideo]);
-
-  const playNextVideo = useCallback(() => {
-    const indexOfActiveVideo = activeSection.videos.findIndex(
-      v => v.name === activeVideo.name
-    );
-    if (indexOfActiveVideo === activeSection.videos.length - 1) {
-      const indexOfActiveSection = config.sections.findIndex(
-        s => s.name === activeSection.name
-      );
-      if (indexOfActiveSection === config.sections.length - 1) {
-        setState({
-          activeSection: config.sections[0],
-          activeVideo: config.sections[0].videos[0],
-          activeLanguageVideo: config.sections[0].videos[0].videos.filter(
-            v => v.language === activeLanguageVideo.language
-          )[0]
-        });
-      } else {
-        setState({
-          activeSection: config.sections[indexOfActiveSection + 1],
-          activeVideo: config.sections[indexOfActiveSection + 1].videos[0],
-          activeLanguageVideo: config.sections[
-            indexOfActiveSection + 1
-          ].videos[0].videos.filter(
-            v => v.language === activeLanguageVideo.language
-          )[0]
-        });
-      }
-    } else {
-      setState({
-        activeSection,
-        activeVideo: activeSection.videos[indexOfActiveVideo + 1],
-        activeLanguageVideo: activeSection.videos[
-          indexOfActiveVideo + 1
-        ].videos.filter(v => v.language === activeLanguageVideo.language)[0]
-      });
-    }
-  }, [config, activeLanguageVideo, activeSection, activeVideo]);
+  const {
+    activeVideo,
+    availableLanguages,
+    playNext,
+    isPlaying,
+    selectLanguage,
+    selectVideo
+  } = useVideos(
+    config,
+    qs.parse(useLocation().search).default_lang as VideoLanguage
+  );
 
   // If this page is being loaded without downloaded videos then pause rendering
   // since the check can be async, and then the hook will handle redirecting to
@@ -160,8 +117,8 @@ const Screencast: React.FC<Props> = ({ downloads, config }) => {
 
   return (
     <div className="container">
-      {config.languageEasterEggs[activeLanguageVideo.language] && (
-        <EasterEgg language={activeLanguageVideo.language} />
+      {config.languageEasterEggs[activeVideo.language] && (
+        <EasterEgg language={activeVideo.language} />
       )}
       <section className="screencast">
         <div className="wrapper">
@@ -174,16 +131,16 @@ const Screencast: React.FC<Props> = ({ downloads, config }) => {
             </div>
             <div className="video-wrapper video-wrapper-dark">
               <BlobVideo
-                videoUrl={activeLanguageVideo.url}
-                posterUrl={activeLanguageVideo.posterUrl}
-                onEnded={playNextVideo}
+                videoUrl={activeVideo.url}
+                posterUrl={activeVideo.posterUrl}
+                onEnded={playNext}
               />
             </div>
           </div>
         </div>
       </section>
       <section className="sidebar">
-        <ol className="video-chapters js-chapter-switcher">
+        <ol className="video-chapters">
           {config.sections.map(section => (
             <li key={section.name} className="section-title">
               {section.name}
@@ -191,28 +148,13 @@ const Screencast: React.FC<Props> = ({ downloads, config }) => {
                 <span
                   key={`${section.name}${video.name}`}
                   className={cx("sidebar-video-name", {
-                    playing:
-                      activeSection.name === section.name &&
-                      activeVideo.name === video.name
+                    playing: isPlaying({ section, video })
                   })}
                 >
                   <span className="video-marker" />
-                  <a
-                    data-target={video.name}
-                    href={`#${video.name}`}
-                    data-tooltip={video.name}
-                    onClick={() => {
-                      setState({
-                        activeSection: section,
-                        activeVideo: video,
-                        activeLanguageVideo: video.videos.filter(
-                          v => v.language === activeLanguageVideo.language
-                        )[0]
-                      });
-                    }}
-                  >
+                  <button onClick={() => selectVideo({ section, video })}>
                     <span>{video.name}</span>
-                  </a>
+                  </button>
                 </span>
               ))}
             </li>
@@ -221,20 +163,9 @@ const Screencast: React.FC<Props> = ({ downloads, config }) => {
       </section>
       <section className="footer">
         <ScreencastLanguagesList
-          activeLanguage={activeLanguageVideo.language}
+          activeLanguage={activeVideo.language}
           languages={availableLanguages}
-          onLanguageChange={(lang: VideoLanguage) => {
-            const newLanguageVideo = activeVideo.videos.filter(
-              v => v.language === lang
-            );
-            if (newLanguageVideo.length > 0) {
-              setState({
-                activeSection,
-                activeVideo,
-                activeLanguageVideo: newLanguageVideo[0]
-              });
-            }
-          }}
+          onLanguageChange={selectLanguage}
         />
       </section>
       <section className="footer-logo">

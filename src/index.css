@@ -56,6 +56,15 @@ code {
     monospace;
 }
 
+input,
+select,
+textarea,
+button {
+  font-family: inherit;
+  font-weight: inherit;
+  line-height: inherit;
+}
+
 #root,
 .App {
   height: 100vh;
