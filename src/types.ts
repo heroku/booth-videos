@@ -31,3 +31,21 @@ export interface VideosConfig {
   languageEasterEggs: LanguageEasterEggs;
 }
 
+export type DownloadStatus = "queued" | "downloading" | "downloaded" | "error";
+
+export interface Status {
+  status: DownloadStatus;
+  message?: string;
+}
+
+export interface Progress {
+  [key: string]: Status;
+}
+
+export interface Downloads {
+  initial: boolean;
+  entries: [string, Status][];
+  pending: boolean;
+  complete: boolean;
+  download: () => void;
+}

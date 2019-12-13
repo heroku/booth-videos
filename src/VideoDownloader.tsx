@@ -1,22 +1,11 @@
-import React, { useEffect, useState } from "react";
-import { keys, set, clear } from "idb-keyval";
+import React, { useState } from "react";
+import { clear } from "idb-keyval";
 import { Link } from "react-router-dom";
 import cx from "classnames";
 import { MalibuIcon } from "@heroku/react-malibu";
-import { VideoLanguage } from "./types";
+import { VideoLanguage, Status, Downloads } from "./types";
 import { ReactComponent as Logo } from "./logo.svg";
 import "./VideoDownloader.css";
-
-type DownloadStatus = "queued" | "downloading" | "downloaded" | "error";
-
-interface Status {
-  status: DownloadStatus;
-  message?: string;
-}
-
-interface Progress {
-  [key: string]: Status;
-}
 
 interface DownloadStatusProps {
   status: Status;
@@ -40,80 +29,22 @@ const DownloadStatusIndicator: React.FC<DownloadStatusProps> = ({ status }) => {
 };
 
 interface VideoDownloaderProps {
-  urls: string[];
+  downloads: Downloads;
   languages: VideoLanguage[];
 }
 const VideoDownloader: React.FC<VideoDownloaderProps> = ({
-  urls,
+  downloads,
   languages
 }) => {
-  const [progress, setProgress] = useState({} as Progress);
-  const [isDownloading, setIsDownloading] = useState(false);
   const [defaultLanguage, setDefaultLanguage] = useState(languages[0]);
-
-  useEffect(() => {
-    async function initialSetup(vids: string[]) {
-      const existingKeys = await keys();
-      setProgress(
-        vids.reduce<Progress>((a, b) => {
-          a[b] =
-            existingKeys.indexOf(b) > -1
-              ? { status: "downloaded" }
-              : { status: "queued" };
-          return a;
-        }, {})
-      );
-    }
-    initialSetup(urls);
-  }, [urls]);
-
-  async function download() {
-    setIsDownloading(true);
-    const existingKeys = await keys();
-    for (const videoUrl of urls.sort()) {
-      if (existingKeys.indexOf(videoUrl) === -1) {
-        setProgress(progress => ({
-          ...progress,
-          [videoUrl]: { status: "downloading" }
-        }));
-        try {
-          const response = await fetch(videoUrl);
-          if (!response.ok) {
-            throw new Error(`Invalid response: ${response.status}`);
-          }
-          const videoBlob = await response.blob();
-          const buffer = await new Response(videoBlob).arrayBuffer();
-          await set(videoUrl, { buffer, type: videoBlob.type });
-          setProgress(progress => ({
-            ...progress,
-            [videoUrl]: { status: "downloaded" }
-          }));
-        } catch (err) {
-          setProgress(progress => ({
-            ...progress,
-            [videoUrl]: { status: "error", message: err }
-          }));
-        }
-      }
-    }
-    setIsDownloading(false);
-  }
-
-  const progressUrls = Object.keys(progress);
-
-  const allVideosDownloaded =
-    progressUrls.length &&
-    Object.entries(progress).every(
-      ([, value]) => value.status === "downloaded"
-    );
 
   return (
     <div className="videodownloader-container">
       <section className="videodownloader-main">
         <header className="videodownloader-header">
           <button
-            disabled={isDownloading || !progressUrls.length}
-            onClick={download}
+            disabled={downloads.pending || !downloads.entries.length}
+            onClick={downloads.download}
             className="button"
           >
             Download Videos
@@ -130,9 +61,9 @@ const VideoDownloader: React.FC<VideoDownloaderProps> = ({
             ))}
           </select>
           <Link
-            className={cx("button", { disabled: !allVideosDownloaded })}
+            className={cx("button", { disabled: !downloads.complete })}
             to={
-              allVideosDownloaded
+              downloads.complete
                 ? `/viewer?default_lang=${defaultLanguage}`
                 : "/"
             }
@@ -140,19 +71,19 @@ const VideoDownloader: React.FC<VideoDownloaderProps> = ({
             Go to view
           </Link>
         </header>
-        {progressUrls.sort().map(url => (
+        {downloads.entries.map(([url, status]) => (
           <div key={url} className="videodownloader-item">
             <div className="videodownloader-item-url">
               <p>{url}</p>
-              {progress[url].message && <p>{`${progress[url].message}`}</p>}
+              {status.message && <p>{`${status.message}`}</p>}
             </div>
             <div
               className={cx("videodownloader-item-status", {
-                error: progress[url].status === "error",
-                queued: progress[url].status === "queued"
+                error: status.status === "error",
+                queued: status.status === "queued"
               })}
             >
-              <DownloadStatusIndicator status={progress[url]} />
+              <DownloadStatusIndicator status={status} />
             </div>
           </div>
         ))}
