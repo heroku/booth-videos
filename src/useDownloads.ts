@@ -6,7 +6,7 @@ import { Progress, Status, Downloads } from "./types";
 
 const urlComparator = (a: string, b: string) => (a > b ? 1 : -1);
 
-const useDownloads = (urls: string[]) => {
+const useDownloads = (urls: string[]): Downloads => {
   const [progress, setProgress] = useState({} as Progress);
   const sortedUrls = useMemo(() => urls.slice(0).sort(urlComparator), [urls]);
 
@@ -71,7 +71,7 @@ const useDownloads = (urls: string[]) => {
     pending,
     complete,
     download
-  } as Downloads;
+  };
 };
 
 export const useHasDownloads = (
