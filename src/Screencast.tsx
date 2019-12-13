@@ -1,11 +1,12 @@
-import React, { useState, useCallback } from "react";
+import React, { useState, useCallback, useMemo } from "react";
 import { MalibuIcon } from "@heroku/react-malibu";
 import BlobVideo from "./BlobVideo";
 import { useLocation, useHistory } from "react-router-dom";
 import qs from "query-string";
 import cx from "classnames";
-import { VideosConfig, VideoLanguage } from "./types";
+import { VideosConfig, VideoLanguage, Downloads } from "./types";
 import { ReactComponent as Logo } from "./logo.svg";
+import { useHasDownloads } from "./useDownloads";
 import EasterEgg from "./EasterEgg";
 import "./Screencast.css";
 
@@ -80,34 +81,36 @@ const ScreencastLanguagesList: React.FC<ScreencastLanguagesListProps> = ({
 );
 
 interface Props {
+  downloads: Downloads;
   config: VideosConfig;
 }
-const Screencast: React.FC<Props> = ({ config }) => {
+const Screencast: React.FC<Props> = ({ downloads, config }) => {
   const defaultLanguage = qs.parse(useLocation().search)
     .default_lang as VideoLanguage;
+
+  const defaultLanguageVideo = useMemo(() => {
+    const videos = config.sections[0].videos[0].videos;
+    const defaultLanguageVideo =
+      defaultLanguage && videos.find(v => v.language === defaultLanguage);
+    return defaultLanguageVideo || videos[0];
+  }, [config, defaultLanguage]);
+
   const [
     { activeSection, activeVideo, activeLanguageVideo },
     setState
   ] = useState({
     activeSection: config.sections[0],
     activeVideo: config.sections[0].videos[0],
-    activeLanguageVideo: findDefaultLanguageVideo()
+    activeLanguageVideo: defaultLanguageVideo
   });
 
-  function findDefaultLanguageVideo() {
-    const videos = config.sections[0].videos[0].videos;
-    const defaultLanguageVideo =
-      defaultLanguage && videos.find(v => v.language === defaultLanguage);
-    return defaultLanguageVideo || videos[0];
-  }
-
-  function availableLanguages() {
+  const availableLanguages = useMemo(() => {
     const languages: VideoLanguage[] = [];
     activeVideo.videos.forEach(video => {
       languages.push(video.language);
     });
     return Array.from(new Set(languages));
-  }
+  }, [activeVideo]);
 
   const playNextVideo = useCallback(() => {
     const indexOfActiveVideo = activeSection.videos.findIndex(
@@ -146,6 +149,14 @@ const Screencast: React.FC<Props> = ({ config }) => {
       });
     }
   }, [config, activeLanguageVideo, activeSection, activeVideo]);
+
+  // If this page is being loaded without downloaded videos then pause rendering
+  // since the check can be async, and then the hook will handle redirecting to
+  // the downloader page
+  const hasDownloads = useHasDownloads(downloads, { redirectTo: "/" });
+  if (!hasDownloads) {
+    return null;
+  }
 
   return (
     <div className="container">
@@ -211,7 +222,7 @@ const Screencast: React.FC<Props> = ({ config }) => {
       <section className="footer">
         <ScreencastLanguagesList
           activeLanguage={activeLanguageVideo.language}
-          languages={availableLanguages()}
+          languages={availableLanguages}
           onLanguageChange={(lang: VideoLanguage) => {
             const newLanguageVideo = activeVideo.videos.filter(
               v => v.language === lang

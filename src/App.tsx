@@ -1,15 +1,16 @@
-import React, { useState } from "react";
+import React, { useState, useMemo } from "react";
 import { MalibuSprites } from "@heroku/react-malibu";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import { VideoLanguage } from "./types";
 import Screencast from "./Screencast";
 import { default as mainConfig } from "./config";
 import VideoDownloader from "./VideoDownloader";
+import useDownloads from "./useDownloads";
+import { VideoLanguage } from "./types";
 
 const App: React.FC = () => {
   const [config] = useState(mainConfig);
 
-  function getDownloaderInfoFromConfig() {
+  const { urls, languages } = useMemo(() => {
     const urls: string[] = [];
     const languages: VideoLanguage[] = [];
 
@@ -27,7 +28,9 @@ const App: React.FC = () => {
       urls: Array.from(new Set(urls)),
       languages: Array.from(new Set(languages))
     };
-  }
+  }, [config]);
+
+  const downloads = useDownloads(urls);
 
   return (
     <Router>
@@ -36,10 +39,10 @@ const App: React.FC = () => {
         <MalibuSprites set="marketing" />
         <Switch>
           <Route path="/" exact>
-            <VideoDownloader {...getDownloaderInfoFromConfig()} />
+            <VideoDownloader downloads={downloads} languages={languages} />
           </Route>
           <Route path="/viewer">
-            <Screencast config={config} />
+            <Screencast downloads={downloads} config={config} />
           </Route>
         </Switch>
       </div>
