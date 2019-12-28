@@ -18,7 +18,6 @@ const App: React.FC = () => {
       section.videos.forEach(video => {
         video.videos.forEach(languageVideo => {
           urls.push(languageVideo.url);
-          urls.push(languageVideo.posterUrl);
           languages.push(languageVideo.language);
         });
       });

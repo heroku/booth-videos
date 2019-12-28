@@ -24,44 +24,32 @@ const config: VideosConfig = {
             {
               language: "node",
               url:
-                "https://heroku-dev-rel-booth-videos.s3.amazonaws.com/2019-12-02/node-deploy-with-cli.mp4",
-              posterUrl:
-                "https://heroku-dev-rel-booth-videos.s3.amazonaws.com/2019-12-02/title-cards/node/node-1-deploy-with-cli.png"
+                "https://heroku-dev-rel-booth-videos.s3.amazonaws.com/2019-12-02/node-deploy-with-cli.mp4"
             },
             {
               language: "ruby",
               url:
-                "https://heroku-dev-rel-booth-videos.s3.amazonaws.com/2019-12-02/ruby-deploy-with-cli.mp4",
-              posterUrl:
-                "https://heroku-dev-rel-booth-videos.s3.amazonaws.com/2019-12-02/title-cards/ruby/ruby-1-deploy-with-cli.png"
+                "https://heroku-dev-rel-booth-videos.s3.amazonaws.com/2019-12-02/ruby-deploy-with-cli.mp4"
             },
             {
               language: "java",
               url:
-                "https://heroku-dev-rel-booth-videos.s3.amazonaws.com/2019-12-02/java-deploy-with-cli.mp4",
-              posterUrl:
-                "https://heroku-dev-rel-booth-videos.s3.amazonaws.com/2019-12-02/title-cards/java/java-1-deploy-with-cli.png"
+                "https://heroku-dev-rel-booth-videos.s3.amazonaws.com/2019-12-02/java-deploy-with-cli.mp4"
             },
             {
               language: "php",
               url:
-                "https://heroku-dev-rel-booth-videos.s3.amazonaws.com/2019-12-02/php-deploy-with-cli.mp4",
-              posterUrl:
-                "https://heroku-dev-rel-booth-videos.s3.amazonaws.com/2019-12-02/title-cards/php/php-1-deploy-with-cli.png"
+                "https://heroku-dev-rel-booth-videos.s3.amazonaws.com/2019-12-02/php-deploy-with-cli.mp4"
             },
             {
               language: "python",
               url:
-                "https://heroku-dev-rel-booth-videos.s3.amazonaws.com/2019-12-02/python-deploy-with-cli.mp4",
-              posterUrl:
-                "https://heroku-dev-rel-booth-videos.s3.amazonaws.com/2019-12-02/title-cards/python/python-1-deploy-with-cli.png"
+                "https://heroku-dev-rel-booth-videos.s3.amazonaws.com/2019-12-02/python-deploy-with-cli.mp4"
             },
             {
               language: "go",
               url:
-                "https://heroku-dev-rel-booth-videos.s3.amazonaws.com/2019-12-02/go-deploy-with-cli.mp4",
-              posterUrl:
-                "https://heroku-dev-rel-booth-videos.s3.amazonaws.com/2019-12-02/title-cards/go/go-1-deploy-with-cli.png"
+                "https://heroku-dev-rel-booth-videos.s3.amazonaws.com/2019-12-02/go-deploy-with-cli.mp4"
             }
           ]
         },
@@ -71,44 +59,32 @@ const config: VideosConfig = {
             {
               language: "node",
               url:
-                "https://heroku-dev-rel-booth-videos.s3.amazonaws.com/2019-12-02/github-continuous-deployment.mp4",
-              posterUrl:
-                "https://heroku-dev-rel-booth-videos.s3.amazonaws.com/2019-12-02/title-cards/node/node-2-cd-with-github.png"
+                "https://heroku-dev-rel-booth-videos.s3.amazonaws.com/2019-12-02/github-continuous-deployment.mp4"
             },
             {
               language: "ruby",
               url:
-                "https://heroku-dev-rel-booth-videos.s3.amazonaws.com/2019-12-02/github-continuous-deployment.mp4",
-              posterUrl:
-                "https://heroku-dev-rel-booth-videos.s3.amazonaws.com/2019-12-02/title-cards/ruby/ruby-2-cd-with-github.png"
+                "https://heroku-dev-rel-booth-videos.s3.amazonaws.com/2019-12-02/github-continuous-deployment.mp4"
             },
             {
               language: "java",
               url:
-                "https://heroku-dev-rel-booth-videos.s3.amazonaws.com/2019-12-02/github-continuous-deployment.mp4",
-              posterUrl:
-                "https://heroku-dev-rel-booth-videos.s3.amazonaws.com/2019-12-02/title-cards/java/java-2-cd-with-github.png"
+                "https://heroku-dev-rel-booth-videos.s3.amazonaws.com/2019-12-02/github-continuous-deployment.mp4"
             },
             {
               language: "php",
               url:
-                "https://heroku-dev-rel-booth-videos.s3.amazonaws.com/2019-12-02/github-continuous-deployment.mp4",
-              posterUrl:
-                "https://heroku-dev-rel-booth-videos.s3.amazonaws.com/2019-12-02/title-cards/php/php-2-cd-with-github.png"
+                "https://heroku-dev-rel-booth-videos.s3.amazonaws.com/2019-12-02/github-continuous-deployment.mp4"
             },
             {
               language: "python",
               url:
-                "https://heroku-dev-rel-booth-videos.s3.amazonaws.com/2019-12-02/github-continuous-deployment.mp4",
-              posterUrl:
-                "https://heroku-dev-rel-booth-videos.s3.amazonaws.com/2019-12-02/title-cards/python/python-2-cd-with-github.png"
+                "https://heroku-dev-rel-booth-videos.s3.amazonaws.com/2019-12-02/github-continuous-deployment.mp4"
             },
             {
               language: "go",
               url:
-                "https://heroku-dev-rel-booth-videos.s3.amazonaws.com/2019-12-02/github-continuous-deployment.mp4",
-              posterUrl:
-                "https://heroku-dev-rel-booth-videos.s3.amazonaws.com/2019-12-02/title-cards/go/go-2-cd-with-github.png"
+                "https://heroku-dev-rel-booth-videos.s3.amazonaws.com/2019-12-02/github-continuous-deployment.mp4"
             }
           ]
         },
@@ -118,44 +94,32 @@ const config: VideosConfig = {
             {
               language: "node",
               url:
-                "https://heroku-dev-rel-booth-videos.s3.amazonaws.com/2019-12-02/heroku-ci-cd-pipelines.mp4",
-              posterUrl:
-                "https://heroku-dev-rel-booth-videos.s3.amazonaws.com/2019-12-02/title-cards/node/ci-cd-node.png"
+                "https://heroku-dev-rel-booth-videos.s3.amazonaws.com/2019-12-02/heroku-ci-cd-pipelines.mp4"
             },
             {
               language: "ruby",
               url:
-                "https://heroku-dev-rel-booth-videos.s3.amazonaws.com/2019-12-02/heroku-ci-cd-pipelines.mp4",
-              posterUrl:
-                "https://heroku-dev-rel-booth-videos.s3.amazonaws.com/2019-12-02/title-cards/ruby/ci-cd-ruby.png"
+                "https://heroku-dev-rel-booth-videos.s3.amazonaws.com/2019-12-02/heroku-ci-cd-pipelines.mp4"
             },
             {
               language: "java",
               url:
-                "https://heroku-dev-rel-booth-videos.s3.amazonaws.com/2019-12-02/heroku-ci-cd-pipelines.mp4",
-              posterUrl:
-                "https://heroku-dev-rel-booth-videos.s3.amazonaws.com/2019-12-02/title-cards/java/ci-cd-java.png"
+                "https://heroku-dev-rel-booth-videos.s3.amazonaws.com/2019-12-02/heroku-ci-cd-pipelines.mp4"
             },
             {
               language: "php",
               url:
-                "https://heroku-dev-rel-booth-videos.s3.amazonaws.com/2019-12-02/heroku-ci-cd-pipelines.mp4",
-              posterUrl:
-                "https://heroku-dev-rel-booth-videos.s3.amazonaws.com/2019-12-02/title-cards/php/ci-cd-php.png"
+                "https://heroku-dev-rel-booth-videos.s3.amazonaws.com/2019-12-02/heroku-ci-cd-pipelines.mp4"
             },
             {
               language: "python",
               url:
-                "https://heroku-dev-rel-booth-videos.s3.amazonaws.com/2019-12-02/heroku-ci-cd-pipelines.mp4",
-              posterUrl:
-                "https://heroku-dev-rel-booth-videos.s3.amazonaws.com/2019-12-02/title-cards/python/ci-cd-python.png"
+                "https://heroku-dev-rel-booth-videos.s3.amazonaws.com/2019-12-02/heroku-ci-cd-pipelines.mp4"
             },
             {
               language: "go",
               url:
-                "https://heroku-dev-rel-booth-videos.s3.amazonaws.com/2019-12-02/heroku-ci-cd-pipelines.mp4",
-              posterUrl:
-                "https://heroku-dev-rel-booth-videos.s3.amazonaws.com/2019-12-02/title-cards/go/ci-cd-go.png"
+                "https://heroku-dev-rel-booth-videos.s3.amazonaws.com/2019-12-02/heroku-ci-cd-pipelines.mp4"
             }
           ]
         }
@@ -170,44 +134,32 @@ const config: VideosConfig = {
             {
               language: "node",
               url:
-                "https://heroku-dev-rel-booth-videos.s3.amazonaws.com/2019-12-02/node-addons.mp4",
-              posterUrl:
-                "https://heroku-dev-rel-booth-videos.s3.amazonaws.com/2019-12-02/title-cards/node/node-4-addons.png"
+                "https://heroku-dev-rel-booth-videos.s3.amazonaws.com/2019-12-02/node-addons.mp4"
             },
             {
               language: "ruby",
               url:
-                "https://heroku-dev-rel-booth-videos.s3.amazonaws.com/2019-12-02/ruby-addons.mp4",
-              posterUrl:
-                "https://heroku-dev-rel-booth-videos.s3.amazonaws.com/2019-12-02/title-cards/ruby/ruby-4-addons.png"
+                "https://heroku-dev-rel-booth-videos.s3.amazonaws.com/2019-12-02/ruby-addons.mp4"
             },
             {
               language: "java",
               url:
-                "https://heroku-dev-rel-booth-videos.s3.amazonaws.com/2019-12-02/java-addons.mp4",
-              posterUrl:
-                "https://heroku-dev-rel-booth-videos.s3.amazonaws.com/2019-12-02/title-cards/java/java-4-addons.png"
+                "https://heroku-dev-rel-booth-videos.s3.amazonaws.com/2019-12-02/java-addons.mp4"
             },
             {
               language: "php",
               url:
-                "https://heroku-dev-rel-booth-videos.s3.amazonaws.com/2019-12-02/php-addons.mp4",
-              posterUrl:
-                "https://heroku-dev-rel-booth-videos.s3.amazonaws.com/2019-12-02/title-cards/php/php-4-addons.png"
+                "https://heroku-dev-rel-booth-videos.s3.amazonaws.com/2019-12-02/php-addons.mp4"
             },
             {
               language: "python",
               url:
-                "https://heroku-dev-rel-booth-videos.s3.amazonaws.com/2019-12-02/python-addons.mp4",
-              posterUrl:
-                "https://heroku-dev-rel-booth-videos.s3.amazonaws.com/2019-12-02/title-cards/python/python-4-addons.png"
+                "https://heroku-dev-rel-booth-videos.s3.amazonaws.com/2019-12-02/python-addons.mp4"
             },
             {
               language: "go",
               url:
-                "https://heroku-dev-rel-booth-videos.s3.amazonaws.com/2019-12-02/go-addons.mp4",
-              posterUrl:
-                "https://heroku-dev-rel-booth-videos.s3.amazonaws.com/2019-12-02/title-cards/go/go-4-addons.png"
+                "https://heroku-dev-rel-booth-videos.s3.amazonaws.com/2019-12-02/go-addons.mp4"
             }
           ]
         },
@@ -217,44 +169,32 @@ const config: VideosConfig = {
             {
               language: "node",
               url:
-                "https://heroku-dev-rel-booth-videos.s3.amazonaws.com/2019-12-02/app-metrics.mp4",
-              posterUrl:
-                "https://heroku-dev-rel-booth-videos.s3.amazonaws.com/2019-12-02/title-cards/node/node-3-app-metrics.png"
+                "https://heroku-dev-rel-booth-videos.s3.amazonaws.com/2019-12-02/app-metrics.mp4"
             },
             {
               language: "ruby",
               url:
-                "https://heroku-dev-rel-booth-videos.s3.amazonaws.com/2019-12-02/app-metrics.mp4",
-              posterUrl:
-                "https://heroku-dev-rel-booth-videos.s3.amazonaws.com/2019-12-02/title-cards/ruby/ruby-3-app-metrics.png"
+                "https://heroku-dev-rel-booth-videos.s3.amazonaws.com/2019-12-02/app-metrics.mp4"
             },
             {
               language: "java",
               url:
-                "https://heroku-dev-rel-booth-videos.s3.amazonaws.com/2019-12-02/app-metrics.mp4",
-              posterUrl:
-                "https://heroku-dev-rel-booth-videos.s3.amazonaws.com/2019-12-02/title-cards/java/java-3-app-metrics.png"
+                "https://heroku-dev-rel-booth-videos.s3.amazonaws.com/2019-12-02/app-metrics.mp4"
             },
             {
               language: "php",
               url:
-                "https://heroku-dev-rel-booth-videos.s3.amazonaws.com/2019-12-02/app-metrics.mp4",
-              posterUrl:
-                "https://heroku-dev-rel-booth-videos.s3.amazonaws.com/2019-12-02/title-cards/php/php-3-app-metrics.png"
+                "https://heroku-dev-rel-booth-videos.s3.amazonaws.com/2019-12-02/app-metrics.mp4"
             },
             {
               language: "python",
               url:
-                "https://heroku-dev-rel-booth-videos.s3.amazonaws.com/2019-12-02/app-metrics.mp4",
-              posterUrl:
-                "https://heroku-dev-rel-booth-videos.s3.amazonaws.com/2019-12-02/title-cards/python/python-3-app-metrics.png"
+                "https://heroku-dev-rel-booth-videos.s3.amazonaws.com/2019-12-02/app-metrics.mp4"
             },
             {
               language: "go",
               url:
-                "https://heroku-dev-rel-booth-videos.s3.amazonaws.com/2019-12-02/app-metrics.mp4",
-              posterUrl:
-                "https://heroku-dev-rel-booth-videos.s3.amazonaws.com/2019-12-02/title-cards/go/go-3-app-metrics.png"
+                "https://heroku-dev-rel-booth-videos.s3.amazonaws.com/2019-12-02/app-metrics.mp4"
             }
           ]
         }
@@ -269,44 +209,32 @@ const config: VideosConfig = {
             {
               language: "node",
               url:
-                "https://heroku-dev-rel-booth-videos.s3.amazonaws.com/2019-12-02/node-scale.mp4",
-              posterUrl:
-                "https://heroku-dev-rel-booth-videos.s3.amazonaws.com/2019-12-02/title-cards/node/node-5-scale.png"
+                "https://heroku-dev-rel-booth-videos.s3.amazonaws.com/2019-12-02/node-scale.mp4"
             },
             {
               language: "ruby",
               url:
-                "https://heroku-dev-rel-booth-videos.s3.amazonaws.com/2019-12-02/ruby-scale.mp4",
-              posterUrl:
-                "https://heroku-dev-rel-booth-videos.s3.amazonaws.com/2019-12-02/title-cards/ruby/ruby-5-scale.png"
+                "https://heroku-dev-rel-booth-videos.s3.amazonaws.com/2019-12-02/ruby-scale.mp4"
             },
             {
               language: "java",
               url:
-                "https://heroku-dev-rel-booth-videos.s3.amazonaws.com/2019-12-02/java-scale.mp4",
-              posterUrl:
-                "https://heroku-dev-rel-booth-videos.s3.amazonaws.com/2019-12-02/title-cards/java/java-5-scale.png"
+                "https://heroku-dev-rel-booth-videos.s3.amazonaws.com/2019-12-02/java-scale.mp4"
             },
             {
               language: "php",
               url:
-                "https://heroku-dev-rel-booth-videos.s3.amazonaws.com/2019-12-02/php-scale.mp4",
-              posterUrl:
-                "https://heroku-dev-rel-booth-videos.s3.amazonaws.com/2019-12-02/title-cards/php/php-5-scale.png"
+                "https://heroku-dev-rel-booth-videos.s3.amazonaws.com/2019-12-02/php-scale.mp4"
             },
             {
               language: "python",
               url:
-                "https://heroku-dev-rel-booth-videos.s3.amazonaws.com/2019-12-02/python-scale.mp4",
-              posterUrl:
-                "https://heroku-dev-rel-booth-videos.s3.amazonaws.com/2019-12-02/title-cards/python/python-5-scale.png"
+                "https://heroku-dev-rel-booth-videos.s3.amazonaws.com/2019-12-02/python-scale.mp4"
             },
             {
               language: "go",
               url:
-                "https://heroku-dev-rel-booth-videos.s3.amazonaws.com/2019-12-02/go-scale.mp4",
-              posterUrl:
-                "https://heroku-dev-rel-booth-videos.s3.amazonaws.com/2019-12-02/title-cards/go/go-5-scale.png"
+                "https://heroku-dev-rel-booth-videos.s3.amazonaws.com/2019-12-02/go-scale.mp4"
             }
           ]
         }
@@ -321,44 +249,32 @@ const config: VideosConfig = {
             {
               language: "node",
               url:
-                "https://heroku-dev-rel-booth-videos.s3.amazonaws.com/2019-12-02/heroku-enterprise-private-spaces.mp4",
-              posterUrl:
-                "https://heroku-dev-rel-booth-videos.s3.amazonaws.com/2019-12-02/title-cards/node/private-spaces-node.png"
+                "https://heroku-dev-rel-booth-videos.s3.amazonaws.com/2019-12-02/heroku-enterprise-private-spaces.mp4"
             },
             {
               language: "ruby",
               url:
-                "https://heroku-dev-rel-booth-videos.s3.amazonaws.com/2019-12-02/heroku-enterprise-private-spaces.mp4",
-              posterUrl:
-                "https://heroku-dev-rel-booth-videos.s3.amazonaws.com/2019-12-02/title-cards/ruby/private-spaces-ruby.png"
+                "https://heroku-dev-rel-booth-videos.s3.amazonaws.com/2019-12-02/heroku-enterprise-private-spaces.mp4"
             },
             {
               language: "java",
               url:
-                "https://heroku-dev-rel-booth-videos.s3.amazonaws.com/2019-12-02/heroku-enterprise-private-spaces.mp4",
-              posterUrl:
-                "https://heroku-dev-rel-booth-videos.s3.amazonaws.com/2019-12-02/title-cards/java/private-spaces-java.png"
+                "https://heroku-dev-rel-booth-videos.s3.amazonaws.com/2019-12-02/heroku-enterprise-private-spaces.mp4"
             },
             {
               language: "php",
               url:
-                "https://heroku-dev-rel-booth-videos.s3.amazonaws.com/2019-12-02/heroku-enterprise-private-spaces.mp4",
-              posterUrl:
-                "https://heroku-dev-rel-booth-videos.s3.amazonaws.com/2019-12-02/title-cards/php/private-spaces-php.png"
+                "https://heroku-dev-rel-booth-videos.s3.amazonaws.com/2019-12-02/heroku-enterprise-private-spaces.mp4"
             },
             {
               language: "python",
               url:
-                "https://heroku-dev-rel-booth-videos.s3.amazonaws.com/2019-12-02/heroku-enterprise-private-spaces.mp4",
-              posterUrl:
-                "https://heroku-dev-rel-booth-videos.s3.amazonaws.com/2019-12-02/title-cards/python/private-spaces-python.png"
+                "https://heroku-dev-rel-booth-videos.s3.amazonaws.com/2019-12-02/heroku-enterprise-private-spaces.mp4"
             },
             {
               language: "go",
               url:
-                "https://heroku-dev-rel-booth-videos.s3.amazonaws.com/2019-12-02/heroku-enterprise-private-spaces.mp4",
-              posterUrl:
-                "https://heroku-dev-rel-booth-videos.s3.amazonaws.com/2019-12-02/title-cards/go/private-spaces-go.png"
+                "https://heroku-dev-rel-booth-videos.s3.amazonaws.com/2019-12-02/heroku-enterprise-private-spaces.mp4"
             }
           ]
         },
@@ -368,44 +284,32 @@ const config: VideosConfig = {
             {
               language: "node",
               url:
-                "https://heroku-dev-rel-booth-videos.s3.amazonaws.com/2019-12-02/heroku-shield-private-spaces.mp4",
-              posterUrl:
-                "https://heroku-dev-rel-booth-videos.s3.amazonaws.com/2019-12-02/title-cards/node/shield-node.png"
+                "https://heroku-dev-rel-booth-videos.s3.amazonaws.com/2019-12-02/heroku-shield-private-spaces.mp4"
             },
             {
               language: "ruby",
               url:
-                "https://heroku-dev-rel-booth-videos.s3.amazonaws.com/2019-12-02/heroku-shield-private-spaces.mp4",
-              posterUrl:
-                "https://heroku-dev-rel-booth-videos.s3.amazonaws.com/2019-12-02/title-cards/ruby/shield-ruby.png"
+                "https://heroku-dev-rel-booth-videos.s3.amazonaws.com/2019-12-02/heroku-shield-private-spaces.mp4"
             },
             {
               language: "java",
               url:
-                "https://heroku-dev-rel-booth-videos.s3.amazonaws.com/2019-12-02/heroku-shield-private-spaces.mp4",
-              posterUrl:
-                "https://heroku-dev-rel-booth-videos.s3.amazonaws.com/2019-12-02/title-cards/java/shield-java.png"
+                "https://heroku-dev-rel-booth-videos.s3.amazonaws.com/2019-12-02/heroku-shield-private-spaces.mp4"
             },
             {
               language: "php",
               url:
-                "https://heroku-dev-rel-booth-videos.s3.amazonaws.com/2019-12-02/heroku-shield-private-spaces.mp4",
-              posterUrl:
-                "https://heroku-dev-rel-booth-videos.s3.amazonaws.com/2019-12-02/title-cards/php/shield-php.png"
+                "https://heroku-dev-rel-booth-videos.s3.amazonaws.com/2019-12-02/heroku-shield-private-spaces.mp4"
             },
             {
               language: "python",
               url:
-                "https://heroku-dev-rel-booth-videos.s3.amazonaws.com/2019-12-02/heroku-shield-private-spaces.mp4",
-              posterUrl:
-                "https://heroku-dev-rel-booth-videos.s3.amazonaws.com/2019-12-02/title-cards/python/shield-python.png"
+                "https://heroku-dev-rel-booth-videos.s3.amazonaws.com/2019-12-02/heroku-shield-private-spaces.mp4"
             },
             {
               language: "go",
               url:
-                "https://heroku-dev-rel-booth-videos.s3.amazonaws.com/2019-12-02/heroku-shield-private-spaces.mp4",
-              posterUrl:
-                "https://heroku-dev-rel-booth-videos.s3.amazonaws.com/2019-12-02/title-cards/go/shield-go.png"
+                "https://heroku-dev-rel-booth-videos.s3.amazonaws.com/2019-12-02/heroku-shield-private-spaces.mp4"
             }
           ]
         },
@@ -415,44 +319,32 @@ const config: VideosConfig = {
             {
               language: "node",
               url:
-                "https://heroku-dev-rel-booth-videos.s3.amazonaws.com/2019-12-02/heroku-enterprise-accounts-teams.mp4",
-              posterUrl:
-                "https://heroku-dev-rel-booth-videos.s3.amazonaws.com/2019-12-02/title-cards/node/enterprise-node.png"
+                "https://heroku-dev-rel-booth-videos.s3.amazonaws.com/2019-12-02/heroku-enterprise-accounts-teams.mp4"
             },
             {
               language: "ruby",
               url:
-                "https://heroku-dev-rel-booth-videos.s3.amazonaws.com/2019-12-02/heroku-enterprise-accounts-teams.mp4",
-              posterUrl:
-                "https://heroku-dev-rel-booth-videos.s3.amazonaws.com/2019-12-02/title-cards/ruby/enterprise-ruby.png"
+                "https://heroku-dev-rel-booth-videos.s3.amazonaws.com/2019-12-02/heroku-enterprise-accounts-teams.mp4"
             },
             {
               language: "java",
               url:
-                "https://heroku-dev-rel-booth-videos.s3.amazonaws.com/2019-12-02/heroku-enterprise-accounts-teams.mp4",
-              posterUrl:
-                "https://heroku-dev-rel-booth-videos.s3.amazonaws.com/2019-12-02/title-cards/java/enterprise-java.png"
+                "https://heroku-dev-rel-booth-videos.s3.amazonaws.com/2019-12-02/heroku-enterprise-accounts-teams.mp4"
             },
             {
               language: "php",
               url:
-                "https://heroku-dev-rel-booth-videos.s3.amazonaws.com/2019-12-02/heroku-enterprise-accounts-teams.mp4",
-              posterUrl:
-                "https://heroku-dev-rel-booth-videos.s3.amazonaws.com/2019-12-02/title-cards/php/enterprise-php.png"
+                "https://heroku-dev-rel-booth-videos.s3.amazonaws.com/2019-12-02/heroku-enterprise-accounts-teams.mp4"
             },
             {
               language: "python",
               url:
-                "https://heroku-dev-rel-booth-videos.s3.amazonaws.com/2019-12-02/heroku-enterprise-accounts-teams.mp4",
-              posterUrl:
-                "https://heroku-dev-rel-booth-videos.s3.amazonaws.com/2019-12-02/title-cards/python/enterprise-python.png"
+                "https://heroku-dev-rel-booth-videos.s3.amazonaws.com/2019-12-02/heroku-enterprise-accounts-teams.mp4"
             },
             {
               language: "go",
               url:
-                "https://heroku-dev-rel-booth-videos.s3.amazonaws.com/2019-12-02/heroku-enterprise-accounts-teams.mp4",
-              posterUrl:
-                "https://heroku-dev-rel-booth-videos.s3.amazonaws.com/2019-12-02/title-cards/go/enterprise-go.png"
+                "https://heroku-dev-rel-booth-videos.s3.amazonaws.com/2019-12-02/heroku-enterprise-accounts-teams.mp4"
             }
           ]
         }

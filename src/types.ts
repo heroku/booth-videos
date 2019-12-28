@@ -3,7 +3,6 @@ export type VideoLanguage = "node" | "ruby" | "java" | "php" | "python" | "go";
 export interface LanguageVideo {
   language: VideoLanguage;
   url: string;
-  posterUrl: string;
 }
 
 export interface Video {

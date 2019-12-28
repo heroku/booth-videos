@@ -3,15 +3,13 @@ import blobMedia from "./blobMedia";
 
 interface VideoProps {
   src: string;
-  poster: string;
 }
-function useVideoBlob(src: string, poster: string): VideoProps {
-  const [video, setVideo] = useState({ src: "", poster: "" } as VideoProps);
+function useVideoBlob(src: string): VideoProps {
+  const [video, setVideo] = useState({ src: ""} as VideoProps);
 
   useEffect(() => {
     let isCancelled = false;
     let srcUrl = "";
-    let posterUrl = "";
 
     async function getBlobs() {
       try {
@@ -20,10 +18,9 @@ function useVideoBlob(src: string, poster: string): VideoProps {
         // and found this corroborating the issue https://github.com/localForage/localForage/issues/824
         // So for now always call these sequentially
         srcUrl = await blobMedia(src);
-        posterUrl = await blobMedia(poster);
 
         if (!isCancelled) {
-          setVideo({ src: srcUrl, poster: posterUrl });
+          setVideo({ src: srcUrl});
         }
       } catch (e) {
         if (!isCancelled) {
@@ -39,24 +36,21 @@ function useVideoBlob(src: string, poster: string): VideoProps {
     return () => {
       isCancelled = true;
       URL.revokeObjectURL(srcUrl);
-      URL.revokeObjectURL(posterUrl);
     };
-  }, [src, poster]);
+  }, [src]);
 
   return video;
 }
 
 interface BlobVideoProps {
   videoUrl: string;
-  posterUrl: string;
   onEnded?: () => void;
 }
 const BlobVideo: React.FC<BlobVideoProps> = ({
   videoUrl,
-  posterUrl,
   onEnded
 }) => {
-  const video = useVideoBlob(videoUrl, posterUrl);
+  const video = useVideoBlob(videoUrl);
   const playerRef = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
