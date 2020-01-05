@@ -3,13 +3,15 @@ import blobMedia from "./blobMedia";
 
 interface VideoProps {
   src: string;
+  poster: string;
 }
-function useVideoBlob(src: string): VideoProps {
-  const [video, setVideo] = useState({ src: ""} as VideoProps);
+function useVideoBlob(src: string, poster: string): VideoProps {
+  const [video, setVideo] = useState({ src: "", poster: "" } as VideoProps);
 
   useEffect(() => {
     let isCancelled = false;
     let srcUrl = "";
+    let posterUrl = "";
 
     async function getBlobs() {
       try {
@@ -18,11 +20,13 @@ function useVideoBlob(src: string): VideoProps {
         // and found this corroborating the issue https://github.com/localForage/localForage/issues/824
         // So for now always call these sequentially
         srcUrl = await blobMedia(src);
+        posterUrl = await blobMedia(poster);
 
         if (!isCancelled) {
-          setVideo({ src: srcUrl});
+          setVideo({ src: srcUrl, poster: posterUrl });
         }
       } catch (e) {
+        console.log(e)
         if (!isCancelled) {
           // The thrown error is likely due to Safari closing the IDB connection.
           // Reloading the page re-establishes the connection.
@@ -36,21 +40,24 @@ function useVideoBlob(src: string): VideoProps {
     return () => {
       isCancelled = true;
       URL.revokeObjectURL(srcUrl);
+      URL.revokeObjectURL(posterUrl);
     };
-  }, [src]);
+  }, [src, poster]);
 
   return video;
 }
 
 interface BlobVideoProps {
   videoUrl: string;
+  posterUrl: string;
   onEnded?: () => void;
 }
 const BlobVideo: React.FC<BlobVideoProps> = ({
   videoUrl,
+  posterUrl,
   onEnded
 }) => {
-  const video = useVideoBlob(videoUrl);
+  const video = useVideoBlob(videoUrl, posterUrl);
   const playerRef = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {

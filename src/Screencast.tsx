@@ -132,6 +132,7 @@ const Screencast: React.FC<Props> = ({ downloads, config }) => {
             <div className="video-wrapper video-wrapper-dark">
               <BlobVideo
                 videoUrl={activeVideo.url}
+                posterUrl={config.deafultPosterUrl}
                 onEnded={playNext}
               />
             </div>

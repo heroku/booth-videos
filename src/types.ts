@@ -27,6 +27,7 @@ export interface LanguageEasterEggs {
 export interface VideosConfig {
   sections: Section[];
   autoplay: boolean;
+  deafultPosterUrl: string;
   languageEasterEggs: LanguageEasterEggs;
 }
 

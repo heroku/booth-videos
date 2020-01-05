@@ -14,6 +14,7 @@ const config: VideosConfig = {
     python: true,
     go: false
   },
+  deafultPosterUrl: "https://heroku-dev-rel-booth-videos.s3.amazonaws.com/2019-12-02/title-cards/node/node-1-deploy-with-cli.png",
   sections: [
     {
       name: "Deploy",
