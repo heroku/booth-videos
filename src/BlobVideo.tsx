@@ -26,7 +26,6 @@ function useVideoBlob(src: string, poster: string): VideoProps {
           setVideo({ src: srcUrl, poster: posterUrl });
         }
       } catch (e) {
-        console.log(e)
         if (!isCancelled) {
           // The thrown error is likely due to Safari closing the IDB connection.
           // Reloading the page re-establishes the connection.
