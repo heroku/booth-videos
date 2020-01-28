@@ -14,7 +14,7 @@ const config: VideosConfig = {
     python: true,
     go: false
   },
-  deafultPosterUrl: "/default-poster.png",
+  deafultPosterUrl: window.location.origin + "/default-poster.png",
   sections: [
     {
       name: "Deploy",
