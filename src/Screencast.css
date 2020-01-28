@@ -112,10 +112,11 @@
   padding-top: 0;
   border-top-left-radius: 0;
   border-top-right-radius: 0;
+  position:relative;
 }
 
 .screencast .video-wrapper video {
-  width: 100%;
+  max-width: 100%;
 }
 
 video {
