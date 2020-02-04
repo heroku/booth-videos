@@ -105,8 +105,7 @@ const useVideos = (config: VideosConfig, defaultLanguage: VideoLanguage) => {
     activeVideo: {
       language: activeLanguageVideo.language,
       name: activeVideo.name,
-      url: activeLanguageVideo.url,
-      posterUrl: activeLanguageVideo.posterUrl
+      url: activeLanguageVideo.url
     },
     availableLanguages,
     playNext,

@@ -13,12 +13,13 @@ const App: React.FC = () => {
   const { urls, languages } = useMemo(() => {
     const urls: string[] = [];
     const languages: VideoLanguage[] = [];
-
+    
+    //Downloading the default poster URL
+    urls.push(config.deafultPosterUrl);
     config.sections.forEach(section => {
       section.videos.forEach(video => {
         video.videos.forEach(languageVideo => {
           urls.push(languageVideo.url);
-          urls.push(languageVideo.posterUrl);
           languages.push(languageVideo.language);
         });
       });

@@ -3,7 +3,6 @@ export type VideoLanguage = "node" | "ruby" | "java" | "php" | "python" | "go";
 export interface LanguageVideo {
   language: VideoLanguage;
   url: string;
-  posterUrl: string;
 }
 
 export interface Video {
@@ -28,6 +27,7 @@ export interface LanguageEasterEggs {
 export interface VideosConfig {
   sections: Section[];
   autoplay: boolean;
+  deafultPosterUrl: string;
   languageEasterEggs: LanguageEasterEggs;
 }
 

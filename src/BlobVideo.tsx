@@ -66,7 +66,6 @@ const BlobVideo: React.FC<BlobVideoProps> = ({
       return () => player.removeEventListener("ended", onEnded);
     }
   }, [onEnded]);
-
   return <video ref={playerRef} autoPlay controls={true} {...video} />;
 };
 

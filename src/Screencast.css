@@ -112,10 +112,21 @@
   padding-top: 0;
   border-top-left-radius: 0;
   border-top-right-radius: 0;
+  position:relative;
 }
 
-.screencast .video-wrapper video {
+/* .screencast .video-wrapper .video-overlay {
+  position: absolute;
+  background: black;
+  top: 0;
+  left: 0;
   width: 100%;
+  height: 100%;
+  z-index: 5;
+} */
+
+.screencast .video-wrapper video {
+  max-width: 100%;
 }
 
 video {
