@@ -24,18 +24,6 @@ Once downloaded, you can go to the viewing interface by clicking "Go to View".
 
 To exit the viewing interface, you can refresh the page, which will bring you to the admin panel. If you cannot refresh, press and hold the Heroku logo in the bottom right corner for six seconds.
 
-## Building and Deploying
-
-To build the static assets for the app, run `npm run build`. This will generate static assets in the `build` folder that can then be deployed to any static file host.
-
-To make deployment easy, the app comes with a `heroku.yml` configured for use with Heroku.
-
-```sh
-$ heroku create
-$ heroku stack:set container
-$ git push heroku master
-```
-
 ## Create React App Stuff
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
