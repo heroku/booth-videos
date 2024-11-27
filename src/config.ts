@@ -25,7 +25,7 @@ const config: VideosConfig = {
             {
               language: "node",
               url:
-                "https://heroku-dev-rel-booth-videos.s3.amazonaws.com/2019-12-02/node-deploy-with-cli.mp4"
+                "https://booth-videos.s3.us-east-2.amazonaws.com/node/node-deploy.mp4"
             },
             {
               language: "ruby",
@@ -60,7 +60,7 @@ const config: VideosConfig = {
             {
               language: "node",
               url:
-                "https://heroku-dev-rel-booth-videos.s3.amazonaws.com/2019-12-02/github-continuous-deployment.mp4"
+                "https://booth-videos.s3.us-east-2.amazonaws.com/node/node-cd-github.mp4"
             },
             {
               language: "ruby",
@@ -95,7 +95,7 @@ const config: VideosConfig = {
             {
               language: "node",
               url:
-                "https://heroku-dev-rel-booth-videos.s3.amazonaws.com/2019-12-02/heroku-ci-cd-pipelines.mp4"
+                "https://booth-videos.s3.us-east-2.amazonaws.com/node/node-pipelines.mp4"
             },
             {
               language: "ruby",
@@ -135,7 +135,7 @@ const config: VideosConfig = {
             {
               language: "node",
               url:
-                "https://heroku-dev-rel-booth-videos.s3.amazonaws.com/2019-12-02/node-addons.mp4"
+                "https://booth-videos.s3.us-east-2.amazonaws.com/node/node-addons.mp4"
             },
             {
               language: "ruby",
@@ -170,7 +170,7 @@ const config: VideosConfig = {
             {
               language: "node",
               url:
-                "https://heroku-dev-rel-booth-videos.s3.amazonaws.com/2019-12-02/app-metrics.mp4"
+                "https://booth-videos.s3.us-east-2.amazonaws.com/node/node-metrics.mp4"
             },
             {
               language: "ruby",
@@ -210,7 +210,7 @@ const config: VideosConfig = {
             {
               language: "node",
               url:
-                "https://heroku-dev-rel-booth-videos.s3.amazonaws.com/2019-12-02/node-scale.mp4"
+                "https://booth-videos.s3.us-east-2.amazonaws.com/node/node-scale.mp4"
             },
             {
               language: "ruby",
@@ -250,7 +250,7 @@ const config: VideosConfig = {
             {
               language: "node",
               url:
-                "https://heroku-dev-rel-booth-videos.s3.amazonaws.com/2019-12-02/heroku-enterprise-private-spaces.mp4"
+                "https://booth-videos.s3.us-east-2.amazonaws.com/node/node-private-spaces.mp4"
             },
             {
               language: "ruby",
@@ -285,7 +285,7 @@ const config: VideosConfig = {
             {
               language: "node",
               url:
-                "https://heroku-dev-rel-booth-videos.s3.amazonaws.com/2019-12-02/heroku-shield-private-spaces.mp4"
+                "https://booth-videos.s3.us-east-2.amazonaws.com/node/node-shield.mp4"
             },
             {
               language: "ruby",
@@ -320,7 +320,7 @@ const config: VideosConfig = {
             {
               language: "node",
               url:
-                "https://heroku-dev-rel-booth-videos.s3.amazonaws.com/2019-12-02/heroku-enterprise-accounts-teams.mp4"
+                "https://booth-videos.s3.us-east-2.amazonaws.com/node/node-teams.mp4"
             },
             {
               language: "ruby",
