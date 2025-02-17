@@ -167,11 +167,16 @@ video {
   margin-top: 10px;
 }
 
+.section-title {
+  font-family: AvantGardeForSalesforce;
+}
+
 .sidebar-video-name {
   display: flex;
   position: relative;
   margin: 10px 0;
   font-size: 18px;
+  font-family: SalesforceSans;
   line-height: 26px;
   letter-spacing: 0px;
   font-weight: 300;

@@ -1,14 +1,14 @@
 .background-gradient {
-  background-color: #4a4090;
+  background-color: #300B60;
   background-image: radial-gradient(
       circle at top right,
-      #713d9a 2%,
+      #9050E9 2%,
       rgba(110, 61, 150, 0) 54%
     ),
     radial-gradient(
       circle at bottom left,
-      #713d9a 2%,
+      #9050E9 2%,
       rgba(110, 61, 150, 0) 54%
     ),
-    linear-gradient(135deg, #412e72 0%, #4f439c 52%, #57368f 100%);
+    linear-gradient(135deg, #401075 0%, #5A1BA9 52%, #7526E3 100%);
 }

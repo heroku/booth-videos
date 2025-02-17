@@ -1,59 +1,72 @@
 @font-face {
-  font-family: BentonSans;
+  font-family: AvantGardeForSalesforce;
+  font-style: normal;
+  src: url(./fonts/AvantGardeForSalesforce-Demi.otf) format("opentype");
+  src: url(./fonts/AvantGardeForSalesforce-Demi.woff) format("woff"),
+    url(./fonts/AvantGardeForSalesforce-Demi.ttf) format("truetype");
+}
+@font-face {
+  font-family: SalesforceSans;
   font-weight: 200;
   font-style: normal;
-  src: url(./fonts/bentonsans-book.eot);
-  src: url(./fonts/bentonsans-book.eot?#iefix) format("embedded-opentype"),
-    url(./fonts/bentonsans-book.woff) format("woff"),
-    url(./fonts/bentonsans-book.ttf) format("truetype"),
-    url(./fonts/bentonsans-book.svg#BentonSans) format("svg");
+  src: url(./fonts/SalesforceSans-Book.eot);
+  src: url(./fonts/SalesforceSans-Book.eot?#iefix) format("embedded-opentype"),
+    url(./fonts/SalesforceSans-Book.woff) format("woff"),
+    url(./fonts/SalesforceSans-Book.ttf) format("truetype"),
+    url(./fonts/SalesforceSans-Book.svg#SalesforceSans) format("svg");
 }
 @font-face {
-  font-family: BentonSans;
+  font-family: SalesforceSans;
   font-weight: normal;
   font-style: normal;
-  src: url(./fonts/bentonsans-regular.eot);
-  src: url(./fonts/bentonsans-regular.eot?#iefix) format("embedded-opentype"),
-    url(./fonts/bentonsans-regular.woff) format("woff"),
-    url(./fonts/bentonsans-regular.ttf) format("truetype"),
-    url(./fonts/bentonsans-regular.svg#BentonSans) format("svg");
+  src: url(./fonts/SalesforceSans-Regular.eot);
+  src: url(./fonts/SalesforceSans-Regular.eot?#iefix)
+      format("embedded-opentype"),
+    url(./fonts/SalesforceSans-Regular.woff) format("woff"),
+    url(./fonts/SalesforceSans-Regular.ttf) format("truetype"),
+    url(./fonts/SalesforceSans-Regular.svg#SalesforceSans) format("svg");
 }
 @font-face {
-  font-family: BentonSans;
+  font-family: SalesforceSans;
   font-weight: bold;
   font-style: normal;
-  src: url(./fonts/bentonsans-medium.eot);
-  src: url(./fonts/bentonsans-medium.eot?#iefix) format("embedded-opentype"),
-    url(./fonts/bentonsans-medium.woff) format("woff"),
-    url(./fonts/bentonsans-medium.ttf) format("truetype"),
-    url(./fonts/bentonsans-medium.svg#BentonSans) format("svg");
+  src: url(./fonts/SalesforceSans-Bold.eot);
+  src: url(./fonts/SalesforceSans-Bold.eot?#iefix) format("embedded-opentype"),
+    url(./fonts/SalesforceSans-Bold.woff) format("woff"),
+    url(./fonts/SalesforceSans-Bold.ttf) format("truetype"),
+    url(./fonts/SalesforceSans-Bold.svg#SalesforceSans) format("svg");
 }
 
 body {
   margin: 0;
-  font-family: BentonSans, -apple-system, BlinkMacSystemFont, "Segoe UI",
+  font-family: SalesforceSans, -apple-system, BlinkMacSystemFont, "Segoe UI",
     "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
     "Helvetica Neue", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   min-height: 100vh;
-  background-color: #4a4090;
+  background-color: #300b60;
   background-image: radial-gradient(
       circle at top right,
-      #713d9a 2%,
+      #9050e9 2%,
       rgba(110, 61, 150, 0) 54%
     ),
     radial-gradient(
       circle at bottom left,
-      #713d9a 2%,
+      #9050e9 2%,
       rgba(110, 61, 150, 0) 54%
     ),
-    linear-gradient(135deg, #412e72 0%, #4f439c 52%, #57368f 100%);
+    linear-gradient(135deg, #401075 0%, #5a1ba9 52%, #7526e3 100%);
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+
+h1, h2, h3 {
+  font-family: AvantGardeForSalesforce, sans-serif;
+  font-weight: 500;
 }
 
 input,
