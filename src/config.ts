@@ -350,6 +350,40 @@ const config: VideosConfig = {
           ]
         }
       ]
+    },
+    {
+      name: "Developer Tools",
+      videos: [
+        {
+          name: "Visual Studio Code",
+          videos: [
+            {
+              language: "node",
+              url: "https://booth-videos.s3.us-east-2.amazonaws.com/vscode.mp4"
+            },
+            {
+              language: "ruby",
+              url: "https://booth-videos.s3.us-east-2.amazonaws.com/vscode.mp4"
+            },
+            {
+              language: "java",
+              url: "https://booth-videos.s3.us-east-2.amazonaws.com/vscode.mp4"
+            },
+            {
+              language: "php",
+              url: "https://booth-videos.s3.us-east-2.amazonaws.com/vscode.mp4"
+            },
+            {
+              language: "python",
+              url: "https://booth-videos.s3.us-east-2.amazonaws.com/vscode.mp4"
+            },
+            {
+              language: "go",
+              url: "https://booth-videos.s3.us-east-2.amazonaws.com/vscode.mp4"
+            }
+          ]
+        }
+      ]
     }
   ]
 };
