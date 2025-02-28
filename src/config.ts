@@ -6,14 +6,6 @@ const envConfig: VideosConfig = process.env.REACT_APP_VIDEO_CONFIG
 
 const config: VideosConfig = {
   autoplay: false,
-  languageEasterEggs: {
-    node: false,
-    ruby: false,
-    java: true,
-    php: false,
-    python: true,
-    go: false
-  },
   deafultPosterUrl: window.location.origin + "/default-poster.png",
   sections: [
     {
