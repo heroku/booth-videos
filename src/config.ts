@@ -127,6 +127,46 @@ const config: VideosConfig = {
       ]
     },
     {
+      name: "Scale",
+      videos: [
+        {
+          name: "Slide to scale",
+          videos: [
+            {
+              language: "node",
+              url:
+                "https://booth-videos.s3.us-east-2.amazonaws.com/node/node-scale.mp4"
+            },
+            {
+              language: "ruby",
+              url:
+                "https://heroku-dev-rel-booth-videos.s3.amazonaws.com/2019-12-02/ruby-scale.mp4"
+            },
+            {
+              language: "java",
+              url:
+                "https://heroku-dev-rel-booth-videos.s3.amazonaws.com/2019-12-02/java-scale.mp4"
+            },
+            {
+              language: "php",
+              url:
+                "https://heroku-dev-rel-booth-videos.s3.amazonaws.com/2019-12-02/php-scale.mp4"
+            },
+            {
+              language: "python",
+              url:
+                "https://heroku-dev-rel-booth-videos.s3.amazonaws.com/2019-12-02/python-scale.mp4"
+            },
+            {
+              language: "go",
+              url:
+                "https://heroku-dev-rel-booth-videos.s3.amazonaws.com/2019-12-02/go-scale.mp4"
+            }
+          ]
+        }
+      ]
+    },
+    {
       name: "Manage",
       videos: [
         {
@@ -196,46 +236,6 @@ const config: VideosConfig = {
               language: "go",
               url:
                 "https://heroku-dev-rel-booth-videos.s3.amazonaws.com/2019-12-02/app-metrics.mp4"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      name: "Scale",
-      videos: [
-        {
-          name: "Slide to scale",
-          videos: [
-            {
-              language: "node",
-              url:
-                "https://booth-videos.s3.us-east-2.amazonaws.com/node/node-scale.mp4"
-            },
-            {
-              language: "ruby",
-              url:
-                "https://heroku-dev-rel-booth-videos.s3.amazonaws.com/2019-12-02/ruby-scale.mp4"
-            },
-            {
-              language: "java",
-              url:
-                "https://heroku-dev-rel-booth-videos.s3.amazonaws.com/2019-12-02/java-scale.mp4"
-            },
-            {
-              language: "php",
-              url:
-                "https://heroku-dev-rel-booth-videos.s3.amazonaws.com/2019-12-02/php-scale.mp4"
-            },
-            {
-              language: "python",
-              url:
-                "https://heroku-dev-rel-booth-videos.s3.amazonaws.com/2019-12-02/python-scale.mp4"
-            },
-            {
-              language: "go",
-              url:
-                "https://heroku-dev-rel-booth-videos.s3.amazonaws.com/2019-12-02/go-scale.mp4"
             }
           ]
         }
