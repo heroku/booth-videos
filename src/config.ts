@@ -9,9 +9,9 @@ const config: VideosConfig = {
   languageEasterEggs: {
     node: false,
     ruby: false,
-    java: true,
+    java: false,
     php: false,
-    python: true,
+    python: false,
     go: false
   },
   deafultPosterUrl: window.location.origin + "/default-poster.png",
