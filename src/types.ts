@@ -1,4 +1,4 @@
-export type VideoLanguage = "node" | "ruby" | "java" | "php" | "python" | "go";
+export type VideoLanguage = "node" | "ruby" | "java" | "php" | "python" | "go" | "net";
 
 export interface LanguageVideo {
   language: VideoLanguage;
@@ -15,20 +15,11 @@ export interface Section {
   videos: Video[];
 }
 
-export interface LanguageEasterEggs {
-  node: boolean;
-  ruby: boolean;
-  java: boolean;
-  php: boolean;
-  python: boolean;
-  go: boolean;
-}
 
 export interface VideosConfig {
   sections: Section[];
   autoplay: boolean;
   deafultPosterUrl: string;
-  languageEasterEggs: LanguageEasterEggs;
 }
 
 export type DownloadStatus = "queued" | "downloading" | "downloaded" | "error";

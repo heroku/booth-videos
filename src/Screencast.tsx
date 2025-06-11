@@ -8,7 +8,6 @@ import { VideosConfig, VideoLanguage, Downloads } from "./types";
 import { ReactComponent as Logo } from "./logo.svg";
 import { useHasDownloads } from "./useDownloads";
 import useVideos from "./useVideos";
-import EasterEgg from "./EasterEgg";
 import "./Screencast.css";
 
 // TODO: scroll video section into view
@@ -19,7 +18,8 @@ const languageTitles: Record<VideoLanguage, string> = {
   java: "Java",
   php: "PHP",
   python: "Python",
-  go: "Go"
+  go: "Go",
+  net: ".NET"
 };
 
 const LongPressLogo: React.FC = () => {
@@ -117,9 +117,6 @@ const Screencast: React.FC<Props> = ({ downloads, config }) => {
 
   return (
     <div className="container">
-      {config.languageEasterEggs[activeVideo.language] && (
-        <EasterEgg language={activeVideo.language} />
-      )}
       <section className="screencast">
         <div className="wrapper">
           <h2 className="video-name">{activeVideo.name}</h2>

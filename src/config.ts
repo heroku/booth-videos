@@ -6,14 +6,6 @@ const envConfig: VideosConfig = process.env.REACT_APP_VIDEO_CONFIG
 
 const config: VideosConfig = {
   autoplay: false,
-  languageEasterEggs: {
-    node: false,
-    ruby: false,
-    java: false,
-    php: false,
-    python: false,
-    go: false
-  },
   deafultPosterUrl: window.location.origin + "/default-poster.png",
   sections: [
     {
@@ -51,6 +43,11 @@ const config: VideosConfig = {
               language: "go",
               url:
                 "https://heroku-dev-rel-booth-videos.s3.amazonaws.com/2019-12-02/go-deploy-with-cli.mp4"
+            },
+            {
+              language: "net",
+              url:
+                "https://booth-videos.s3.us-east-2.amazonaws.com/dotnet/dotnet-deploy.mp4"
             }
           ]
         },
@@ -86,7 +83,12 @@ const config: VideosConfig = {
               language: "go",
               url:
                 "https://heroku-dev-rel-booth-videos.s3.amazonaws.com/2019-12-02/github-continuous-deployment.mp4"
-            }
+            },
+            {
+              language: "net",
+              url:
+                "https://booth-videos.s3.us-east-2.amazonaws.com/node/node-cd-github.mp4"
+            },
           ]
         },
         {
@@ -121,6 +123,11 @@ const config: VideosConfig = {
               language: "go",
               url:
                 "https://heroku-dev-rel-booth-videos.s3.amazonaws.com/2019-12-02/heroku-ci-cd-pipelines.mp4"
+            },
+            {
+              language: "net",
+              url:
+                "https://booth-videos.s3.us-east-2.amazonaws.com/node/node-pipelines.mp4"
             }
           ]
         }
@@ -161,7 +168,12 @@ const config: VideosConfig = {
               language: "go",
               url:
                 "https://heroku-dev-rel-booth-videos.s3.amazonaws.com/2019-12-02/go-scale.mp4"
-            }
+            },
+            {
+              language: "net",
+              url:
+                "https://booth-videos.s3.us-east-2.amazonaws.com/dotnet/dotnet-scale.mp4"
+            },
           ]
         }
       ]
@@ -201,7 +213,12 @@ const config: VideosConfig = {
               language: "go",
               url:
                 "https://heroku-dev-rel-booth-videos.s3.amazonaws.com/2019-12-02/go-addons.mp4"
-            }
+            },
+            {
+              language: "net",
+              url:
+                "https://booth-videos.s3.us-east-2.amazonaws.com/dotnet/dotnet-addons.mp4"
+            },
           ]
         },
         {
@@ -236,7 +253,12 @@ const config: VideosConfig = {
               language: "go",
               url:
                 "https://heroku-dev-rel-booth-videos.s3.amazonaws.com/2019-12-02/app-metrics.mp4"
-            }
+            },
+            {
+              language: "net",
+              url:
+                "https://booth-videos.s3.us-east-2.amazonaws.com/node/node-metrics.mp4"
+            },
           ]
         }
       ]
@@ -276,7 +298,12 @@ const config: VideosConfig = {
               language: "go",
               url:
                 "https://heroku-dev-rel-booth-videos.s3.amazonaws.com/2019-12-02/heroku-enterprise-private-spaces.mp4"
-            }
+            },
+            {
+              language: "net",
+              url:
+                "https://booth-videos.s3.us-east-2.amazonaws.com/node/node-private-spaces.mp4"
+            },
           ]
         },
         {
@@ -311,7 +338,12 @@ const config: VideosConfig = {
               language: "go",
               url:
                 "https://heroku-dev-rel-booth-videos.s3.amazonaws.com/2019-12-02/heroku-shield-private-spaces.mp4"
-            }
+            },
+            {
+              language: "net",
+              url:
+                "https://booth-videos.s3.us-east-2.amazonaws.com/node/node-shield.mp4"
+            },
           ]
         },
         {
@@ -346,7 +378,12 @@ const config: VideosConfig = {
               language: "go",
               url:
                 "https://heroku-dev-rel-booth-videos.s3.amazonaws.com/2019-12-02/heroku-enterprise-accounts-teams.mp4"
-            }
+            },
+            {
+              language: "net",
+              url:
+                "https://booth-videos.s3.us-east-2.amazonaws.com/node/node-teams.mp4"
+            },
           ]
         }
       ]
@@ -380,7 +417,11 @@ const config: VideosConfig = {
             {
               language: "go",
               url: "https://booth-videos.s3.us-east-2.amazonaws.com/vscode.mp4"
-            }
+            },
+            {
+              language: "net",
+              url: "https://booth-videos.s3.us-east-2.amazonaws.com/vscode.mp4"
+            },
           ]
         }
       ]

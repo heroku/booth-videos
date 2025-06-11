@@ -30,7 +30,7 @@ const useDownloads = (urls: string[]): Downloads => {
           await set(videoUrl, { buffer, type: videoBlob.type });
           setVideoStatus({ status: "downloaded" });
         } catch (err) {
-          setVideoStatus({ status: "error", message: err });
+          setVideoStatus({ status: "error", message: err as string });
         }
       }
     };
